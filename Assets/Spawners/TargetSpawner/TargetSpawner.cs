@@ -3,36 +3,32 @@ using UnityEngine.Assertions;
 
 public class TargetSpawner : MonoBehaviour
 {
-    [SerializeField]
-    GameManager GameManager;
+    [SerializeField] private GameManager gameManager;
 
-    [SerializeField]
-    TargetController TargetPrefab;
+    [SerializeField] private TargetController targetPrefab;
 
-    [SerializeField]
-    Transform RegionTopLeft;
+    [SerializeField] private Transform regionTopLeft;
 
-    [SerializeField]
-    Transform RegionBottomRight;
+    [SerializeField] private Transform regionBottomRight;
 
-    float remainTime;
+    private float _remainTime;
 
-    void Start()
+    private void Start()
     {
-        Assert.IsNotNull(TargetPrefab);
-        remainTime = Constants.TargetSpawner.SPAWN_TIME;
+        Assert.IsNotNull(targetPrefab);
+        _remainTime = Constants.TargetSpawner.SpawnTime;
     }
 
-    void Update()
+    private void Update()
     {
-        remainTime -= Time.deltaTime;
-        if (remainTime <= 0f)
+        _remainTime -= Time.deltaTime;
+        if (_remainTime <= 0f)
         {
-            remainTime += Constants.TargetSpawner.SPAWN_TIME;
+            _remainTime += Constants.TargetSpawner.SpawnTime;
 
-            Vector3 newPosition = new(Random.Range(RegionTopLeft.position.x, RegionBottomRight.position.x), Random.Range(RegionTopLeft.position.y, RegionBottomRight.position.y), 0);
-            TargetController targetController = Instantiate(TargetPrefab, newPosition, Quaternion.identity);
-            GameManager.targetComponents.Add(targetController);
+            Vector3 newPosition = new(Random.Range(regionTopLeft.position.x, regionBottomRight.position.x), Random.Range(regionTopLeft.position.y, regionBottomRight.position.y), 0);
+            var targetController = Instantiate(targetPrefab, newPosition, Quaternion.identity);
+            gameManager.TargetComponents.Add(targetController);
 
         }
     }

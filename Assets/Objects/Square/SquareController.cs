@@ -4,47 +4,44 @@ using System.Linq;
 
 public class SquareController : MonoBehaviour
 {
-    [SerializeField] GameManager GameManager;
+    [SerializeField] private GameManager gameManager;
 
-    public void SetGameManager(GameManager gameManager)
+    public void SetGameManager(GameManager gm)
     {
-        GameManager = gameManager;
+        gameManager = gm;
     }
 
-    TargetController currentTarget;
-    float currentStopTime = Constants.SquareSpawner.STOP_TIME;
+    private TargetController _currentTarget;
+    private float _currentStopTime = Constants.SquareSpawner.StopTime;
 
-    TargetController SelectTarget(List<TargetController> targets)
+    private TargetController SelectTarget(List<TargetController> targets)
     {
-        if (targets.Count > 0)
-        {
-            int random = Random.Range(0, targets.Count);
-            return targets[random];
-        }
-        return null;
+        if (targets.Count <= 0) return null;
+        var random = Random.Range(0, targets.Count);
+        return targets[random];
     }
 
-    void Update()
+    private void Update()
     {
-        if (currentTarget == null)
+        if (!_currentTarget)
         {
-            currentTarget = SelectTarget(GameManager.targetComponents);
+            _currentTarget = SelectTarget(gameManager.TargetComponents);
         } 
         else
         {
-            float currentDistance = Vector3.Distance(transform.position, currentTarget.transform.position);
-            if (Mathf.Abs(currentDistance) < Constants.SquareSpawner.STOP_RADIUS)
+            var currentDistance = Vector3.Distance(transform.position, _currentTarget.transform.position);
+            if (Mathf.Abs(currentDistance) < Constants.SquareSpawner.StopRadius)
             {
-                currentStopTime -= Time.deltaTime;
-                if (currentStopTime <= 0f)
+                _currentStopTime -= Time.deltaTime;
+                if (_currentStopTime <= 0f)
                 {
-                    currentTarget = SelectTarget(GameManager.targetComponents);
-                    currentStopTime = Constants.SquareSpawner.STOP_TIME;
+                    _currentTarget = SelectTarget(gameManager.TargetComponents);
+                    _currentStopTime = Constants.SquareSpawner.StopTime;
                 }
             }
             else
             {
-                transform.position = Vector3.MoveTowards(transform.position, currentTarget.transform.position, Constants.SquareSpawner.MOVE_SPEED * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, _currentTarget.transform.position, Constants.SquareSpawner.MoveSpeed * Time.deltaTime);
             }
         }
     }

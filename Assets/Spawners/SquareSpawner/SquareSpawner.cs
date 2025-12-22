@@ -3,37 +3,33 @@ using UnityEngine.Assertions;
 
 public class SquareSpawner : MonoBehaviour
 {
-    [SerializeField] 
-    GameManager GameManager;
+    [SerializeField] private GameManager gameManager;
 
-    [SerializeField]
-    SquareController SquarePrefab;
+    [SerializeField] private SquareController squarePrefab;
 
-    [SerializeField]
-    Transform RegionTopLeft;
+    [SerializeField] private Transform regionTopLeft;
 
-    [SerializeField]
-    Transform RegionBottomRight;
+    [SerializeField] private Transform regionBottomRight;
 
-    float remainTime;
+    private float _remainTime;
 
-    void Start()
+    private void Start()
     {
-        Assert.IsNotNull(SquarePrefab);
-        remainTime = Constants.SquareSpawner.SPAWN_TIME;
+        Assert.IsNotNull(squarePrefab);
+        _remainTime = Constants.SquareSpawner.SpawnTime;
     }
 
-    void Update()
+    private void Update()
     {
-        remainTime -= Time.deltaTime;
-        if (remainTime <= 0f)
+        _remainTime -= Time.deltaTime;
+        if (_remainTime <= 0f)
         {
-            remainTime += Constants.SquareSpawner.SPAWN_TIME;
+            _remainTime += Constants.SquareSpawner.SpawnTime;
 
-            Vector3 newPosition = new(Random.Range(RegionTopLeft.position.x, RegionBottomRight.position.x), Random.Range(RegionTopLeft.position.y, RegionBottomRight.position.y), 0);
-            SquareController squareController = Instantiate(SquarePrefab, newPosition, Quaternion.identity);
-            squareController.SetGameManager(GameManager);
-            GameManager.squareComponents.Add(squareController);
+            Vector3 newPosition = new(Random.Range(regionTopLeft.position.x, regionBottomRight.position.x), Random.Range(regionTopLeft.position.y, regionBottomRight.position.y), 0);
+            var squareController = Instantiate(squarePrefab, newPosition, Quaternion.identity);
+            squareController.SetGameManager(gameManager);
+            gameManager.SquareComponents.Add(squareController);
         }
     }
 }

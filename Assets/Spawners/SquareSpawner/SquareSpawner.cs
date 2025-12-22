@@ -4,6 +4,7 @@ using UnityEngine.Assertions;
 public class SquareSpawner : MonoBehaviour
 {
     [SerializeField] private GameManager gameManager;
+    [SerializeField] private GameUI gameUI;
 
     [SerializeField] private SquareController squarePrefab;
 
@@ -29,6 +30,7 @@ public class SquareSpawner : MonoBehaviour
             Vector3 newPosition = new(Random.Range(regionTopLeft.position.x, regionBottomRight.position.x), Random.Range(regionTopLeft.position.y, regionBottomRight.position.y), 0);
             var squareController = Instantiate(squarePrefab, newPosition, Quaternion.identity);
             squareController.SetGameManager(gameManager);
+            squareController.SetGameUI(gameUI);
             gameManager.SquareComponents.Add(squareController);
         }
     }

@@ -5,10 +5,16 @@ using System.Linq;
 public class SquareController : MonoBehaviour
 {
     [SerializeField] private GameManager gameManager;
+    [SerializeField] private GameUI gameUI;
 
     public void SetGameManager(GameManager gm)
     {
         gameManager = gm;
+    }
+
+    public void SetGameUI(GameUI ui)
+    {
+        gameUI = ui;
     }
 
     private TargetController _currentTarget;
@@ -37,6 +43,7 @@ public class SquareController : MonoBehaviour
                 {
                     _currentTarget = SelectTarget(gameManager.TargetComponents);
                     _currentStopTime = Constants.SquareSpawner.StopTime;
+                    gameUI.AddScore(1);
                 }
             }
             else

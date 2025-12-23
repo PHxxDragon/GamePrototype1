@@ -4,16 +4,13 @@ namespace Objects.Region
 {
     public class RegionController : MonoBehaviour
     {
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
-        void Start()
-        {
-        
-        }
+        [SerializeField] private Transform rotateCenter;
 
-        // Update is called once per frame
-        void Update()
+        [SerializeField] private float rotateSpeed = 30f;
+
+        private void Update()
         {
-        
+            transform.RotateAround(rotateCenter.position, Vector3.back, rotateSpeed * Time.deltaTime);
         }
     }
 }

@@ -1,35 +1,39 @@
+using Objects.Target;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-public class TargetSpawner : MonoBehaviour
+namespace Spawners.TargetSpawner
 {
-    [SerializeField] private GameManager gameManager;
-
-    [SerializeField] private TargetController targetPrefab;
-
-    [SerializeField] private Transform regionTopLeft;
-
-    [SerializeField] private Transform regionBottomRight;
-
-    private float _remainTime;
-
-    private void Start()
+    public class TargetSpawner : MonoBehaviour
     {
-        Assert.IsNotNull(targetPrefab);
-        _remainTime = Constants.TargetSpawner.SpawnTime;
-    }
+        [SerializeField] private GameManager.GameManager gameManager;
 
-    private void Update()
-    {
-        _remainTime -= Time.deltaTime;
-        if (_remainTime <= 0f)
+        [SerializeField] private TargetController targetPrefab;
+
+        [SerializeField] private Transform regionTopLeft;
+
+        [SerializeField] private Transform regionBottomRight;
+
+        private float _remainTime;
+
+        private void Start()
         {
-            _remainTime += Constants.TargetSpawner.SpawnTime;
+            Assert.IsNotNull(targetPrefab);
+            _remainTime = Constants.Constants.TargetSpawner.SpawnTime;
+        }
 
-            Vector3 newPosition = new(Random.Range(regionTopLeft.position.x, regionBottomRight.position.x), Random.Range(regionTopLeft.position.y, regionBottomRight.position.y), 0);
-            var targetController = Instantiate(targetPrefab, newPosition, Quaternion.identity);
-            gameManager.TargetComponents.Add(targetController);
+        private void Update()
+        {
+            _remainTime -= Time.deltaTime;
+            if (_remainTime <= 0f)
+            {
+                _remainTime += Constants.Constants.TargetSpawner.SpawnTime;
 
+                Vector3 newPosition = new(Random.Range(regionTopLeft.position.x, regionBottomRight.position.x), Random.Range(regionTopLeft.position.y, regionBottomRight.position.y), 0);
+                var targetController = Instantiate(targetPrefab, newPosition, Quaternion.identity);
+                gameManager.TargetComponents.Add(targetController);
+
+            }
         }
     }
 }

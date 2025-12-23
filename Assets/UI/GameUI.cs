@@ -1,21 +1,24 @@
 using TMPro;
 using UnityEngine;
 
-public class GameUI : MonoBehaviour
+namespace UI
 {
-    [SerializeField] private TMP_Text scoreText;
+    public class GameUI : MonoBehaviour
+    {
+        [SerializeField] private TMP_Text scoreText;
     
-    private int _score;
+        private int _score;
 
-    public void SetScore(int score)
-    {
-        _score = score;
-        scoreText.text = "Score: " + score;
-    }
+        public void SetScore(int score)
+        {
+            _score = score;
+            scoreText.text = "Score: " + score;
+        }
 
-    public void AddScore(int score)
-    {
-        _score += score;
-        scoreText.text = "Score: " + _score;
+        public void AddScore(int score)
+        {
+            _score += score;
+            scoreText.text = "Score: " + _score;
+        }
     }
 }

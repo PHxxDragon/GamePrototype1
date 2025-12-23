@@ -1,8 +1,13 @@
-using UnityEngine;
 using System.Collections.Generic;
+using Objects.Square;
+using Objects.Target;
+using UnityEngine;
 
-public class GameManager : MonoBehaviour
+namespace GameManager
 {
-    public readonly List<SquareController> SquareComponents = new();
-    public readonly List<TargetController> TargetComponents = new();
+    public class GameManager : MonoBehaviour
+    {
+        public readonly List<SquareController> SquareComponents = new();
+        public readonly List<TargetController> TargetComponents = new();
+    }
 }

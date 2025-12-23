@@ -1,54 +1,58 @@
-using UnityEngine;
 using System.Collections.Generic;
-using System.Linq;
+using Objects.Target;
+using UI;
+using UnityEngine;
 
-public class SquareController : MonoBehaviour
+namespace Objects.Square
 {
-    [SerializeField] private GameManager gameManager;
-    [SerializeField] private GameUI gameUI;
-
-    public void SetGameManager(GameManager gm)
+    public class SquareController : MonoBehaviour
     {
-        gameManager = gm;
-    }
+        [SerializeField] private GameManager.GameManager gameManager;
+        [SerializeField] private GameUI gameUI;
 
-    public void SetGameUI(GameUI ui)
-    {
-        gameUI = ui;
-    }
-
-    private TargetController _currentTarget;
-    private float _currentStopTime = Constants.SquareSpawner.StopTime;
-
-    private TargetController SelectTarget(List<TargetController> targets)
-    {
-        if (targets.Count <= 0) return null;
-        var random = Random.Range(0, targets.Count);
-        return targets[random];
-    }
-
-    private void Update()
-    {
-        if (!_currentTarget)
+        public void SetGameManager(GameManager.GameManager gm)
         {
-            _currentTarget = SelectTarget(gameManager.TargetComponents);
-        } 
-        else
+            gameManager = gm;
+        }
+
+        public void SetGameUI(GameUI ui)
         {
-            var currentDistance = Vector3.Distance(transform.position, _currentTarget.transform.position);
-            if (Mathf.Abs(currentDistance) < Constants.SquareSpawner.StopRadius)
+            gameUI = ui;
+        }
+
+        private TargetController _currentTarget;
+        private float _currentStopTime = Constants.Constants.SquareSpawner.StopTime;
+
+        private TargetController SelectTarget(List<TargetController> targets)
+        {
+            if (targets.Count <= 0) return null;
+            var random = Random.Range(0, targets.Count);
+            return targets[random];
+        }
+
+        private void Update()
+        {
+            if (!_currentTarget)
             {
-                _currentStopTime -= Time.deltaTime;
-                if (_currentStopTime <= 0f)
-                {
-                    _currentTarget = SelectTarget(gameManager.TargetComponents);
-                    _currentStopTime = Constants.SquareSpawner.StopTime;
-                    gameUI.AddScore(1);
-                }
-            }
+                _currentTarget = SelectTarget(gameManager.TargetComponents);
+            } 
             else
             {
-                transform.position = Vector3.MoveTowards(transform.position, _currentTarget.transform.position, Constants.SquareSpawner.MoveSpeed * Time.deltaTime);
+                var currentDistance = Vector3.Distance(transform.position, _currentTarget.transform.position);
+                if (Mathf.Abs(currentDistance) < Constants.Constants.SquareSpawner.StopRadius)
+                {
+                    _currentStopTime -= Time.deltaTime;
+                    if (_currentStopTime <= 0f)
+                    {
+                        _currentTarget = SelectTarget(gameManager.TargetComponents);
+                        _currentStopTime = Constants.Constants.SquareSpawner.StopTime;
+                        gameUI.AddScore(1);
+                    }
+                }
+                else
+                {
+                    transform.position = Vector3.MoveTowards(transform.position, _currentTarget.transform.position, Constants.Constants.SquareSpawner.MoveSpeed * Time.deltaTime);
+                }
             }
         }
     }

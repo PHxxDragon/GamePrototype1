@@ -768,6 +768,22 @@ PrefabInstance:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 174588532}
+    - target: {fileID: 4105273345578561174, guid: b42e7bcc56cc5f04f8fff82156da474c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -18.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 4105273345578561174, guid: b42e7bcc56cc5f04f8fff82156da474c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 9.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 5693552694702875946, guid: b42e7bcc56cc5f04f8fff82156da474c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 18.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5693552694702875946, guid: b42e7bcc56cc5f04f8fff82156da474c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -9.86
+      objectReference: {fileID: 0}
     - target: {fileID: 6426236499432763083, guid: b42e7bcc56cc5f04f8fff82156da474c, type: 3}
       propertyPath: m_Name
       value: TargetSpawner
@@ -785,6 +801,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4384200908703631778, guid: db3923cf99db5374db356db36a054cdf, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 14.74
+      objectReference: {fileID: 0}
+    - target: {fileID: 4384200908703631778, guid: db3923cf99db5374db356db36a054cdf, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -7.04
+      objectReference: {fileID: 0}
     - target: {fileID: 6252998496854150174, guid: db3923cf99db5374db356db36a054cdf, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -828,6 +852,14 @@ PrefabInstance:
     - target: {fileID: 6587715872837820337, guid: db3923cf99db5374db356db36a054cdf, type: 3}
       propertyPath: m_Name
       value: SquareSpawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 6657363548939522223, guid: db3923cf99db5374db356db36a054cdf, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -13.46
+      objectReference: {fileID: 0}
+    - target: {fileID: 6657363548939522223, guid: db3923cf99db5374db356db36a054cdf, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.98
       objectReference: {fileID: 0}
     - target: {fileID: 8357388728981716956, guid: db3923cf99db5374db356db36a054cdf, type: 3}
       propertyPath: gameUI

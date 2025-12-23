@@ -631,6 +631,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1643427565}
   m_CullTransparentMesh: 1
+--- !u!114 &1691248931 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1521471393502836900, guid: 2c892f34ac0716ef781baed1fb20e4b4, type: 3}
+  m_PrefabInstance: {fileID: 8173095068288855761}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2ab9dc46915dea11810e151be4e47c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Objects.Region.RegionController
 --- !u!1 &1888410413
 GameObject:
   m_ObjectHideFlags: 0
@@ -799,6 +810,10 @@ PrefabInstance:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 174588532}
+    - target: {fileID: 2950384372337434007, guid: b42e7bcc56cc5f04f8fff82156da474c, type: 3}
+      propertyPath: regionController
+      value: 
+      objectReference: {fileID: 1691248931}
     - target: {fileID: 4105273345578561174, guid: b42e7bcc56cc5f04f8fff82156da474c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -18.57

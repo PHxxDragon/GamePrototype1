@@ -1,3 +1,4 @@
+using Objects.Region;
 using Objects.Target;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -13,6 +14,7 @@ namespace Spawners.TargetSpawner
         [SerializeField] private Transform regionTopLeft;
 
         [SerializeField] private Transform regionBottomRight;
+        [SerializeField] private RegionController regionController;
 
         private float _remainTime;
 
@@ -33,6 +35,11 @@ namespace Spawners.TargetSpawner
                 var targetController = Instantiate(targetPrefab, newPosition, Quaternion.identity);
                 gameManager.TargetComponents.Add(targetController);
 
+                if (Vector3.Distance(regionController.transform.position, targetController.transform.position) <
+                    regionController.Radius)
+                {
+                    targetController.transform.parent = regionController.transform;
+                }
             }
         }
     }

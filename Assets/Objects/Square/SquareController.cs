@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using Objects.Target;
 using UI;
 using UnityEngine;
@@ -11,6 +12,7 @@ namespace Objects.Square
         [SerializeField] private GameUI gameUI;
         [SerializeField] private float remainHealth = 10f;
         [SerializeField] private SpriteRenderer spriteRenderer;
+        [SerializeField] private GameObject scoreCircle;
 
         public void SetGameManager(GameManager.GameManager gm)
         {
@@ -49,6 +51,7 @@ namespace Objects.Square
                         _currentTarget = SelectTarget(gameManager.TargetComponents);
                         _currentStopTime = Constants.Constants.SquareSpawner.StopTime;
                         gameUI.AddScore(1);
+                        _ = ShowCoin();
                     }
 
                     if (remainHealth <= 10f)
@@ -77,6 +80,13 @@ namespace Objects.Square
                     }
                 }
             }
+        }
+
+        private async UniTaskVoid ShowCoin()
+        {
+            scoreCircle.SetActive(true);
+            await UniTask.WaitForSeconds(0.4f);
+            scoreCircle.SetActive(false);
         }
     }
 }

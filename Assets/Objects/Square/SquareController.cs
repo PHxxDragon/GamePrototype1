@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using Objects.Target;
 using UI;
 using UnityEngine;
@@ -9,6 +10,9 @@ namespace Objects.Square
     {
         [SerializeField] private GameManager.GameManager gameManager;
         [SerializeField] private GameUI gameUI;
+        [SerializeField] private float remainHealth = 10f;
+        [SerializeField] private SpriteRenderer spriteRenderer;
+        [SerializeField] private GameObject scoreCircle;
 
         public void SetGameManager(GameManager.GameManager gm)
         {
@@ -47,13 +51,42 @@ namespace Objects.Square
                         _currentTarget = SelectTarget(gameManager.TargetComponents);
                         _currentStopTime = Constants.Constants.SquareSpawner.StopTime;
                         gameUI.AddScore(1);
+                        _ = ShowCoin();
+                    }
+
+                    if (remainHealth <= 10f)
+                    {
+                        remainHealth += Time.deltaTime;
+                    }
+
+                    if (remainHealth >= 3f)
+                    {
+                        spriteRenderer.color = new Color(0.26f, 0.7f, 0.33f);
                     }
                 }
                 else
                 {
                     transform.position = Vector3.MoveTowards(transform.position, _currentTarget.transform.position, Constants.Constants.SquareSpawner.MoveSpeed * Time.deltaTime);
+                    remainHealth -= Time.deltaTime;
+                    
+                    if (remainHealth <= 3f)
+                    {
+                        spriteRenderer.color = Color.darkGoldenRod;
+                    } 
+                    
+                    if (remainHealth <= 0f)
+                    {
+                        Destroy(gameObject);
+                    }
                 }
             }
+        }
+
+        private async UniTaskVoid ShowCoin()
+        {
+            scoreCircle.SetActive(true);
+            await UniTask.WaitForSeconds(0.4f);
+            scoreCircle.SetActive(false);
         }
     }
 }

@@ -1,4 +1,4 @@
-using Objects.Square;
+using GameObjects.Square;
 using UI;
 using UnityEngine;
 using UnityEngine.Assertions;

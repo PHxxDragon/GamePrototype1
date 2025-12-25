@@ -1,5 +1,5 @@
-using Objects.Region;
-using Objects.Target;
+using GameObjects.Region;
+using GameObjects.Target;
 using UnityEngine;
 using UnityEngine.Assertions;
 

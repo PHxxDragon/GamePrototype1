@@ -110,6 +110,7 @@ MonoBehaviour:
   remainHealth: 10
   spriteRenderer: {fileID: 2731227251832262394}
   scoreCircle: {fileID: 7617222298903686725}
+  childPrefab: {fileID: -5320510622591345842, guid: 87c7be7e1e5ea23519a874e8bb1e2666, type: 3}
 --- !u!1 &7617222298903686725
 GameObject:
   m_ObjectHideFlags: 0

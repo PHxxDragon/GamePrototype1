@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
+using GameObjects.SquareChild;
 using GameObjects.Target;
 using UI;
 using UnityEngine;
@@ -13,6 +14,9 @@ namespace GameObjects.Square
         [SerializeField] private float remainHealth = 10f;
         [SerializeField] private SpriteRenderer spriteRenderer;
         [SerializeField] private GameObject scoreCircle;
+        [SerializeField] private SquareChildController childPrefab;
+
+        private int _remainScoreToHaveChild = Constants.Constants.SquareSpawner.ScoreToHaveChild;
 
         public void SetGameManager(GameManager.GameManager gm)
         {
@@ -52,6 +56,16 @@ namespace GameObjects.Square
                         _currentStopTime = Constants.Constants.SquareSpawner.StopTime;
                         gameUI.AddScore(1);
                         _ = ShowCoin();
+                        _remainScoreToHaveChild--;
+
+                        if (_remainScoreToHaveChild <= 0)
+                        {
+                            _remainScoreToHaveChild =  Constants.Constants.SquareSpawner.ScoreToHaveChild;
+                            SquareChildController child = Instantiate(childPrefab, transform.position, Quaternion.identity);
+                            child.SetParent(this);
+                            child.SetGameManager(gameManager);
+                            child.SetGameUI(gameUI);
+                        }
                     }
 
                     if (remainHealth <= 10f)

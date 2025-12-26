@@ -41,6 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6252998496854150174}
   - component: {fileID: 8357388728981716956}
+  - component: {fileID: 6672516033548940964}
   m_Layer: 0
   m_Name: SquareSpawner
   m_TagString: Untagged
@@ -77,11 +78,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a22baa76318ef74881068bfc4f30b63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  gameManager: {fileID: 0}
-  gameUI: {fileID: 0}
-  squarePrefab: {fileID: 926860894866518141, guid: 274b8aeb05886a5fc9405d5a7a53f90d, type: 3}
   regionTopLeft: {fileID: 6657363548939522223}
   regionBottomRight: {fileID: 4384200908703631778}
+--- !u!114 &6672516033548940964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6587715872837820337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ec84ab9ec7946935bcffa2e0a8e1dbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spawners.SquareSpawner.SquareSpawnerLifeTimeScope
+  parentReference:
+    TypeName: Container.SceneLifeTimeScope
+  autoRun: 1
+  autoInjectGameObjects: []
+  squareSpawnerView: {fileID: 8357388728981716956}
+  squarePrefab: {fileID: 926860894866518141, guid: 274b8aeb05886a5fc9405d5a7a53f90d, type: 3}
 --- !u!1 &7390350745724671979
 GameObject:
   m_ObjectHideFlags: 0

@@ -951,14 +951,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SquareSpawner
       objectReference: {fileID: 0}
-    - target: {fileID: 8357388728981716956, guid: db3923cf99db5374db356db36a054cdf, type: 3}
-      propertyPath: gameUI
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8357388728981716956, guid: db3923cf99db5374db356db36a054cdf, type: 3}
-      propertyPath: gameManager
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

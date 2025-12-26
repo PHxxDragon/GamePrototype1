@@ -2,12 +2,13 @@ using GameObjects.Region;
 using GameObjects.Target;
 using UnityEngine;
 using UnityEngine.Assertions;
+using VContainer;
 
 namespace Spawners.TargetSpawner
 {
     public class TargetSpawner : MonoBehaviour
     {
-        [SerializeField] private GameManager.GameManager gameManager;
+        private GameManager.GameManager _gameManager;
 
         [SerializeField] private TargetController targetPrefab;
 
@@ -17,6 +18,12 @@ namespace Spawners.TargetSpawner
         [SerializeField] private RegionController regionController;
 
         private float _remainTime;
+    
+        [Inject]
+        public void Construct(GameManager.GameManager gameManager)
+        {
+            _gameManager = gameManager;
+        }
 
         private void Start()
         {
@@ -33,7 +40,7 @@ namespace Spawners.TargetSpawner
 
                 Vector3 newPosition = new(Random.Range(regionTopLeft.position.x, regionBottomRight.position.x), Random.Range(regionTopLeft.position.y, regionBottomRight.position.y), 0);
                 var targetController = Instantiate(targetPrefab, newPosition, Quaternion.identity);
-                gameManager.TargetComponents.Add(targetController);
+                _gameManager.TargetComponents.Add(targetController);
 
                 if (Vector3.Distance(regionController.transform.position, targetController.transform.position) <
                     regionController.Radius)

@@ -2,12 +2,14 @@ using GameObjects.Square;
 using UI;
 using UnityEngine;
 using UnityEngine.Assertions;
+using VContainer;
 
 namespace Spawners.SquareSpawner
 {
     public class SquareSpawner : MonoBehaviour
     {
-        [SerializeField] private GameManager.GameManager gameManager;
+        private GameManager.GameManager _gameManager;
+        
         [SerializeField] private GameUI gameUI;
 
         [SerializeField] private SquareController squarePrefab;
@@ -15,6 +17,12 @@ namespace Spawners.SquareSpawner
         [SerializeField] private Transform regionTopLeft;
 
         [SerializeField] private Transform regionBottomRight;
+
+        [Inject]
+        public void Construct(GameManager.GameManager gameManager)
+        {
+            _gameManager = gameManager;
+        }
 
         private float _remainTime;
 
@@ -33,9 +41,9 @@ namespace Spawners.SquareSpawner
 
                 Vector3 newPosition = new(Random.Range(regionTopLeft.position.x, regionBottomRight.position.x), Random.Range(regionTopLeft.position.y, regionBottomRight.position.y), 0);
                 var squareController = Instantiate(squarePrefab, newPosition, Quaternion.identity);
-                squareController.SetGameManager(gameManager);
+                squareController.SetGameManager(_gameManager);
                 squareController.SetGameUI(gameUI);
-                gameManager.SquareComponents.Add(squareController);
+                _gameManager.SquareComponents.Add(squareController);
             }
         }
     }

@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace GameManager
 {
-    public class GameManager : MonoBehaviour
+    public class GameManager
     {
         public readonly List<SquareController> SquareComponents = new();
         public readonly List<TargetController> TargetComponents = new();

@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 174588533}
   - component: {fileID: 174588534}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: SceneLifeTime
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -721,7 +721,7 @@ GameObject:
   - component: {fileID: 1888410417}
   - component: {fileID: 1888410416}
   - component: {fileID: 1888410415}
-  - component: {fileID: 1888410414}
+  - component: {fileID: 1888410419}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -729,19 +729,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1888410414
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1888410413}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00b503be6022491c996df5fea1113234, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  scoreText: {fileID: 1643427567}
 --- !u!114 &1888410415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -825,6 +812,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1888410419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1888410413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00b503be6022491c996df5fea1113234, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI.GameUI
+  scoreText: {fileID: 1643427567}
 --- !u!1001 &6897261053162278579
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -954,7 +954,7 @@ PrefabInstance:
     - target: {fileID: 8357388728981716956, guid: db3923cf99db5374db356db36a054cdf, type: 3}
       propertyPath: gameUI
       value: 
-      objectReference: {fileID: 1888410414}
+      objectReference: {fileID: 0}
     - target: {fileID: 8357388728981716956, guid: db3923cf99db5374db356db36a054cdf, type: 3}
       propertyPath: gameManager
       value: 

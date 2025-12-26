@@ -8,8 +8,6 @@ namespace Spawners.TargetSpawner
 {
     public class TargetSpawner : MonoBehaviour
     {
-        private GameManager.GameManager _gameManager;
-
         [SerializeField] private TargetController targetPrefab;
 
         [SerializeField] private Transform regionTopLeft;
@@ -24,6 +22,8 @@ namespace Spawners.TargetSpawner
         {
             _gameManager = gameManager;
         }
+        
+        private GameManager.GameManager _gameManager;
 
         private void Start()
         {

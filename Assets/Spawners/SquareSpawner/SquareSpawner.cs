@@ -8,10 +8,6 @@ namespace Spawners.SquareSpawner
 {
     public class SquareSpawner : MonoBehaviour
     {
-        private GameManager.GameManager _gameManager;
-        
-        [SerializeField] private GameUI gameUI;
-
         [SerializeField] private SquareController squarePrefab;
 
         [SerializeField] private Transform regionTopLeft;
@@ -19,10 +15,15 @@ namespace Spawners.SquareSpawner
         [SerializeField] private Transform regionBottomRight;
 
         [Inject]
-        public void Construct(GameManager.GameManager gameManager)
+        public void Construct(GameManager.GameManager gameManager, GameUI gameUI)
         {
             _gameManager = gameManager;
+            _gameUI = gameUI;
         }
+        
+        private GameManager.GameManager _gameManager;
+        
+        private GameUI _gameUI;
 
         private float _remainTime;
 
@@ -42,7 +43,7 @@ namespace Spawners.SquareSpawner
                 Vector3 newPosition = new(Random.Range(regionTopLeft.position.x, regionBottomRight.position.x), Random.Range(regionTopLeft.position.y, regionBottomRight.position.y), 0);
                 var squareController = Instantiate(squarePrefab, newPosition, Quaternion.identity);
                 squareController.SetGameManager(_gameManager);
-                squareController.SetGameUI(gameUI);
+                squareController.SetGameUI(_gameUI);
                 _gameManager.SquareComponents.Add(squareController);
             }
         }

@@ -6,16 +6,29 @@ using VContainer.Unity;
 
 namespace Spawners.SquareSpawner
 {
+    public enum Keys
+    {
+        TopLeft,
+        BottomRight
+    }
+    
     public class SquareSpawnerController: IStartable, ITickable
     {
         [Inject]
-        public void Construct(GameManager.GameManager gameManager, GameUI gameUI, IObjectResolver resolver, SquareController squarePrefab, SquareSpawnerView squareSpawnerView)
+        public void Construct(
+            GameManager.GameManager gameManager, 
+            GameUI gameUI, 
+            IObjectResolver resolver, 
+            SquareController squarePrefab, 
+            [Key(Keys.TopLeft)] Transform regionTopLeft,
+            [Key(Keys.BottomRight)] Transform regionBottomRight)
         {
             _gameManager = gameManager;
             _gameUI = gameUI;
             _resolver = resolver;
             _squarePrefab = squarePrefab;
-            _squareSpawnerView = squareSpawnerView;
+            _regionTopLeft = regionTopLeft;
+            _regionBottomRight = regionBottomRight;
         }
         
         private GameManager.GameManager _gameManager;
@@ -28,7 +41,9 @@ namespace Spawners.SquareSpawner
         
         private SquareController _squarePrefab;
         
-        private SquareSpawnerView _squareSpawnerView;
+        private Transform _regionTopLeft;
+        
+        private Transform _regionBottomRight;
 
         public void Start()
         {
@@ -42,7 +57,7 @@ namespace Spawners.SquareSpawner
             {
                 _remainTime += Constants.Constants.SquareSpawner.SpawnTime;
 
-                Vector3 newPosition = new(Random.Range(_squareSpawnerView.regionTopLeft.position.x, _squareSpawnerView.regionBottomRight.position.x), Random.Range(_squareSpawnerView.regionTopLeft.position.y, _squareSpawnerView.regionBottomRight.position.y), 0);
+                Vector3 newPosition = new(Random.Range(_regionTopLeft.position.x, _regionBottomRight.position.x), Random.Range(_regionTopLeft.position.y, _regionBottomRight.position.y), 0);
                 
                 var squareController = _resolver.Instantiate(_squarePrefab, newPosition, Quaternion.identity);
                 squareController.SetGameManager(_gameManager);

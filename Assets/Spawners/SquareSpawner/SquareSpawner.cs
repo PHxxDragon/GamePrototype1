@@ -39,9 +39,8 @@ namespace Spawners.SquareSpawner
                 remainTime += Constants.Constants.SquareSpawner.SpawnTime;
 
                 Vector3 newPosition = new(Random.Range(regionTopLeft.position.x, regionBottomRight.position.x), Random.Range(regionTopLeft.position.y, regionBottomRight.position.y), 0);
-                var squareController = Instantiate(squarePrefab, newPosition, Quaternion.identity);
-                squareController.SetGameManager(gameManager);
-                squareController.SetGameUI(gameUI);
+                var squareController = squarePrefab.Instantiate(gameManager, gameUI);
+                squareController.transform.position = newPosition;
                 gameManager.SquareComponents.Add(squareController);
             }
         }

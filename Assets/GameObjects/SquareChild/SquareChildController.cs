@@ -1,6 +1,8 @@
+using GameManagers;
 using GameObjects.Square;
 using UI;
 using UnityEngine;
+using Sisus.Init;
 
 namespace GameObjects.SquareChild
 {
@@ -8,49 +10,48 @@ namespace GameObjects.SquareChild
     {
         [SerializeField] private SquareController squarePrefab;
         
-        private SquareController _parent;
-        private GameManagers.GameManager _gameManager;
-        private GameUI _gameUI;
+        private SquareController parent;
+        private GameManager gameManager;
+        private GameUI gameUI;
 
-        private float _remainGrowUpTime = Constants.Constants.SquareSpawner.GrowUpTime;
+        private float remainGrowUpTime = Constants.Constants.SquareSpawner.GrowUpTime;
 
-        public void SetGameManager(GameManagers.GameManager gameManager)
+        public void SetGameManager(GameManager gameManager)
         {
-            _gameManager = gameManager;
+            this.gameManager = gameManager;
         }
 
         public void SetGameUI(GameUI gameUI)
         {
-            _gameUI = gameUI;
+            this.gameUI = gameUI;
         }
 
         public void SetParent(SquareController parent)
         {
-            _parent = parent;
+            this.parent = parent;
         }
 
         void Update()
         {
-            if (_parent)
+            if (parent)
             {
-                if (Vector3.Distance(transform.position, _parent.transform.position) > 0.1f)
+                if (Vector3.Distance(transform.position, parent.transform.position) > 0.1f)
                 {
-                    Vector3 direction = _parent.transform.position - transform.position;
+                    Vector3 direction = parent.transform.position - transform.position;
                     transform.position += direction.normalized * (Time.deltaTime * 10f);
                 }
                 else
                 {
-                    _remainGrowUpTime -= Time.deltaTime;
+                    remainGrowUpTime -= Time.deltaTime;
                 }
             }
 
-            if (_remainGrowUpTime <= 0)
+            if (remainGrowUpTime <= 0)
             {
                 for (var i = 0; i < 3; i++)
                 {
-                    var squareController = Instantiate(squarePrefab, transform.position, Quaternion.identity);
-                    squareController.SetGameManager(_gameManager);
-                    squareController.SetGameUI(_gameUI);
+                    var squareController = squarePrefab.Instantiate(gameManager, gameUI);
+                    squareController.transform.position = transform.position;
                 }
                 
                 Destroy(gameObject);

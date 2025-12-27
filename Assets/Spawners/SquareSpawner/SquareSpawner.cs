@@ -1,35 +1,42 @@
+using GameManagers;
 using GameObjects.Square;
+using Sisus.Init;
 using UI;
 using UnityEngine;
 using UnityEngine.Assertions;
 
 namespace Spawners.SquareSpawner
 {
-    public class SquareSpawner : MonoBehaviour
+    public class SquareSpawner : MonoBehaviour<GameManager, GameUI>
     {
-        [SerializeField] private GameManager.GameManager gameManager;
-        [SerializeField] private GameUI gameUI;
-
         [SerializeField] private SquareController squarePrefab;
 
         [SerializeField] private Transform regionTopLeft;
 
         [SerializeField] private Transform regionBottomRight;
 
-        private float _remainTime;
+        private GameManager gameManager;
+        private GameUI gameUI;
+        private float remainTime;
+
+        protected override void Init(GameManager pgameManager, GameUI pgameUI)
+        {
+            gameManager = pgameManager;
+            gameUI = pgameUI;
+        }
 
         private void Start()
         {
             Assert.IsNotNull(squarePrefab);
-            _remainTime = Constants.Constants.SquareSpawner.SpawnTime;
+            remainTime = Constants.Constants.SquareSpawner.SpawnTime;
         }
 
         private void Update()
         {
-            _remainTime -= Time.deltaTime;
-            if (_remainTime <= 0f)
+            remainTime -= Time.deltaTime;
+            if (remainTime <= 0f)
             {
-                _remainTime += Constants.Constants.SquareSpawner.SpawnTime;
+                remainTime += Constants.Constants.SquareSpawner.SpawnTime;
 
                 Vector3 newPosition = new(Random.Range(regionTopLeft.position.x, regionBottomRight.position.x), Random.Range(regionTopLeft.position.y, regionBottomRight.position.y), 0);
                 var squareController = Instantiate(squarePrefab, newPosition, Quaternion.identity);

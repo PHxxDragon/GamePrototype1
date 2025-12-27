@@ -9,7 +9,7 @@ namespace GameObjects.Square
 {
     public class SquareController : MonoBehaviour
     {
-        [SerializeField] private GameManager.GameManager gameManager;
+        [SerializeField] private GameManagers.GameManager gameManager;
         [SerializeField] private GameUI gameUI;
         [SerializeField] private float remainHealth = 10f;
         [SerializeField] private SpriteRenderer spriteRenderer;
@@ -18,7 +18,7 @@ namespace GameObjects.Square
 
         private int _remainScoreToHaveChild = Constants.Constants.SquareSpawner.ScoreToHaveChild;
 
-        public void SetGameManager(GameManager.GameManager gm)
+        public void SetGameManager(GameManagers.GameManager gm)
         {
             gameManager = gm;
         }

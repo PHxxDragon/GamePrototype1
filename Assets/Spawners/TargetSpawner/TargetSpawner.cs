@@ -1,13 +1,15 @@
+using GameManagers;
 using GameObjects.Region;
 using GameObjects.Target;
+using Sisus.Init;
 using UnityEngine;
 using UnityEngine.Assertions;
 
 namespace Spawners.TargetSpawner
 {
-    public class TargetSpawner : MonoBehaviour
+    public class TargetSpawner : MonoBehaviour<GameManager>
     {
-        [SerializeField] private GameManager.GameManager gameManager;
+        private GameManager gameManager;
 
         [SerializeField] private TargetController targetPrefab;
 
@@ -16,20 +18,25 @@ namespace Spawners.TargetSpawner
         [SerializeField] private Transform regionBottomRight;
         [SerializeField] private RegionController regionController;
 
-        private float _remainTime;
+        private float remainTime;
+
+        protected override void Init(GameManager pgameManager)
+        {
+            gameManager = pgameManager;
+        }
 
         private void Start()
         {
             Assert.IsNotNull(targetPrefab);
-            _remainTime = Constants.Constants.TargetSpawner.SpawnTime;
+            remainTime = Constants.Constants.TargetSpawner.SpawnTime;
         }
 
         private void Update()
         {
-            _remainTime -= Time.deltaTime;
-            if (_remainTime <= 0f)
+            remainTime -= Time.deltaTime;
+            if (remainTime <= 0f)
             {
-                _remainTime += Constants.Constants.TargetSpawner.SpawnTime;
+                remainTime += Constants.Constants.TargetSpawner.SpawnTime;
 
                 Vector3 newPosition = new(Random.Range(regionTopLeft.position.x, regionBottomRight.position.x), Random.Range(regionTopLeft.position.y, regionBottomRight.position.y), 0);
                 var targetController = Instantiate(targetPrefab, newPosition, Quaternion.identity);

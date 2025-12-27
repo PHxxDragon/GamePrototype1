@@ -6,7 +6,7 @@ using VContainer.Unity;
 
 namespace Spawners.SquareSpawner
 {
-    public enum Keys
+    public enum InjectKeys
     {
         TopLeft,
         BottomRight
@@ -20,8 +20,8 @@ namespace Spawners.SquareSpawner
             GameUI gameUI, 
             IObjectResolver resolver, 
             SquareController squarePrefab, 
-            [Key(Keys.TopLeft)] Transform regionTopLeft,
-            [Key(Keys.BottomRight)] Transform regionBottomRight)
+            [Key(InjectKeys.TopLeft)] Transform regionTopLeft,
+            [Key(InjectKeys.BottomRight)] Transform regionBottomRight)
         {
             _gameManager = gameManager;
             _gameUI = gameUI;

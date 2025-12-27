@@ -15,8 +15,8 @@ namespace Spawners.SquareSpawner
         {
             builder.RegisterInstance(squarePrefab);
             builder.RegisterEntryPoint<SquareSpawnerController>();
-            builder.RegisterInstance(topLeft).Keyed(Keys.TopLeft);
-            builder.RegisterInstance(bottomRight).Keyed(Keys.BottomRight);
+            builder.RegisterInstance(topLeft).Keyed(InjectKeys.TopLeft);
+            builder.RegisterInstance(bottomRight).Keyed(InjectKeys.BottomRight);
         }
     }
 }

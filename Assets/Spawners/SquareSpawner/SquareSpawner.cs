@@ -7,41 +7,41 @@ using UnityEngine.Assertions;
 
 namespace Spawners.SquareSpawner
 {
-    public class SquareSpawner : MonoBehaviour<GameManager, GameUI>
+    public class SquareSpawner : MonoBehaviour<GameManager, GameUI, Transform, Transform, SquareController>
     {
-        [SerializeField] private SquareController squarePrefab;
+        private SquareController _squarePrefab;
+        private Transform _regionTopLeft;
+        private Transform _regionBottomRight;
+        private GameManager _gameManager;
+        private GameUI _gameUI;
+        private float _remainTime;
 
-        [SerializeField] private Transform regionTopLeft;
-
-        [SerializeField] private Transform regionBottomRight;
-
-        private GameManager gameManager;
-        private GameUI gameUI;
-        private float remainTime;
-
-        protected override void Init(GameManager pgameManager, GameUI pgameUI)
+        protected override void Init(GameManager gameManager, GameUI gameUI, Transform topLeft, Transform bottomRight, SquareController squareController)
         {
-            gameManager = pgameManager;
-            gameUI = pgameUI;
+            _gameManager = gameManager;
+            _gameUI = gameUI;
+            _regionTopLeft = topLeft;
+            _regionBottomRight = bottomRight;
+            _squarePrefab = squareController;
         }
 
         private void Start()
         {
-            Assert.IsNotNull(squarePrefab);
-            remainTime = Constants.Constants.SquareSpawner.SpawnTime;
+            Assert.IsNotNull(_squarePrefab);
+            _remainTime = Constants.Constants.SquareSpawner.SpawnTime;
         }
 
         private void Update()
         {
-            remainTime -= Time.deltaTime;
-            if (remainTime <= 0f)
+            _remainTime -= Time.deltaTime;
+            if (_remainTime <= 0f)
             {
-                remainTime += Constants.Constants.SquareSpawner.SpawnTime;
+                _remainTime += Constants.Constants.SquareSpawner.SpawnTime;
 
-                Vector3 newPosition = new(Random.Range(regionTopLeft.position.x, regionBottomRight.position.x), Random.Range(regionTopLeft.position.y, regionBottomRight.position.y), 0);
-                var squareController = squarePrefab.Instantiate(gameManager, gameUI);
+                Vector3 newPosition = new(Random.Range(_regionTopLeft.position.x, _regionBottomRight.position.x), Random.Range(_regionTopLeft.position.y, _regionBottomRight.position.y), 0);
+                var squareController = _squarePrefab.Instantiate(_gameManager, _gameUI);
                 squareController.transform.position = newPosition;
-                gameManager.SquareComponents.Add(squareController);
+                _gameManager.SquareComponents.Add(squareController);
             }
         }
     }

@@ -47,12 +47,18 @@ namespace VContainer.Unity
                 }
             }
         }
-
-        [SerializeField]
+        
+        [HideInInspector]
         public ParentReference parentReference;
+        
+        [SerializeField]
+        public LifetimeScope parentLifetimeScope;
 
         [SerializeField]
         public bool autoRun = true;
+        
+        [SerializeField]
+        public bool findScopeInParent = false;
 
         [SerializeField]
         protected List<GameObject> autoInjectGameObjects;
@@ -138,6 +144,7 @@ namespace VContainer.Unity
             {
                 scopeName = $"{name} ({gameObject.GetInstanceID()})";
             }
+
             try
             {
                 if (autoRun)
@@ -145,12 +152,22 @@ namespace VContainer.Unity
                     Build();
                 }
             }
-            catch (VContainerParentTypeReferenceNotFound) when(!IsRoot)
+            catch (VContainerParentTypeReferenceNotFound) when (!IsRoot)
             {
                 if (WaitingList.Contains(this))
                 {
                     throw;
                 }
+
+                EnqueueAwake(this);
+            }
+            catch (VContainerParentContainerNotInitialized)
+            {
+                if (WaitingList.Contains(this))
+                {
+                    throw;
+                }
+
                 EnqueueAwake(this);
             }
         }
@@ -303,7 +320,17 @@ namespace VContainer.Unity
             EntryPointsBuilder.EnsureDispatcherRegistered(builder);
         }
 
-        protected virtual LifetimeScope FindParent() => null;
+        protected virtual LifetimeScope FindParent()
+        {
+            if (parentLifetimeScope) return parentLifetimeScope;
+            
+            if (findScopeInParent && transform.parent)
+            {
+                return transform.parent.GetComponentInParent<LifetimeScope>();
+            }
+            
+            return null;
+        }
 
         LifetimeScope GetRuntimeParent()
         {
@@ -316,9 +343,13 @@ namespace VContainer.Unity
             var implParent = FindParent();
             if (implParent != null)
             {
-                if (parentReference.Type != null && parentReference.Type != implParent.GetType()) {
-                    UnityEngine.Debug.LogWarning($"FindParent returned {implParent.GetType()} but parent reference type is {parentReference.Type}. This may be unintentional.");
+                if (implParent.Container == null)
+                {
+                    throw new VContainerParentContainerNotInitialized(implParent, $"Parent scope {implParent}  not initialized");
                 }
+                // if (parentReference.Type != null && parentReference.Type != implParent.GetType()) {
+                //    UnityEngine.Debug.LogWarning($"FindParent returned {implParent.GetType()} but parent reference type is {parentReference.Type}. This may be unintentional.");
+                // }
                 return implParent;
             }
 

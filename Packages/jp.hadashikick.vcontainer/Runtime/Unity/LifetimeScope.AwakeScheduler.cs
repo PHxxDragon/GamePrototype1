@@ -17,6 +17,17 @@ namespace VContainer.Unity
         }
     }
 
+    public sealed class VContainerParentContainerNotInitialized : Exception
+    {
+        public readonly LifetimeScope ParentLifetimeScope;
+
+        public VContainerParentContainerNotInitialized(LifetimeScope parentLifetimeScope, string message)
+            : base(message)
+        {
+            ParentLifetimeScope = parentLifetimeScope;
+        }
+    }
+
     partial class LifetimeScope
     {
         static readonly List<LifetimeScope> WaitingList = new List<LifetimeScope>();

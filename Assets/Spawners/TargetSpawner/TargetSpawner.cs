@@ -1,3 +1,4 @@
+using GameManagers;
 using GameObjects.Region;
 using GameObjects.Target;
 using UnityEngine;
@@ -18,12 +19,12 @@ namespace Spawners.TargetSpawner
         private float _remainTime;
     
         [Inject]
-        public void Construct(GameManager.GameManager gameManager)
+        public void Construct(GameManager gameManager)
         {
             _gameManager = gameManager;
         }
         
-        private GameManager.GameManager _gameManager;
+        private GameManager _gameManager;
 
         private void Start()
         {

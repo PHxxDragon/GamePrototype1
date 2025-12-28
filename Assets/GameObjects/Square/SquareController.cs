@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
+using GameManagers;
 using GameObjects.SquareChild;
 using GameObjects.Target;
 using UI;
@@ -9,7 +10,7 @@ namespace GameObjects.Square
 {
     public class SquareController : MonoBehaviour
     {
-        [SerializeField] private GameManager.GameManager gameManager;
+        [SerializeField] private GameManager gameManager;
         [SerializeField] private GameUI gameUI;
         [SerializeField] private float remainHealth = 10f;
         [SerializeField] private SpriteRenderer spriteRenderer;
@@ -18,7 +19,7 @@ namespace GameObjects.Square
 
         private int _remainScoreToHaveChild = Constants.Constants.SquareSpawner.ScoreToHaveChild;
 
-        public void SetGameManager(GameManager.GameManager gm)
+        public void SetGameManager(GameManager gm)
         {
             gameManager = gm;
         }

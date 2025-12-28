@@ -8,7 +8,7 @@ namespace GameManagers
     {
         protected override void Configure(IContainerBuilder builder)
         {
-            builder.Register<global::GameManagers.GameManager>(Lifetime.Singleton);
+            builder.Register<GameManager>(Lifetime.Singleton);
             builder.RegisterComponentInHierarchy<GameUI>();
         }
     }

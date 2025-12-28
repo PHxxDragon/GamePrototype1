@@ -78,9 +78,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Spawners.SquareSpawner.SquareSpawnerLifeTimeScope
   parentReference:
-    TypeName: Container.SceneLifeTimeScope
+    TypeName: GameManagers.SceneLifeTimeScope
   autoRun: 1
   autoInjectGameObjects: []
+  parent: {fileID: 0}
   squarePrefab: {fileID: 926860894866518141, guid: 274b8aeb05886a5fc9405d5a7a53f90d, type: 3}
   topLeft: {fileID: 6657363548939522223}
   bottomRight: {fileID: 4384200908703631778}

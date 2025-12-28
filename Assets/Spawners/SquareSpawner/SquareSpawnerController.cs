@@ -1,3 +1,4 @@
+using GameManagers;
 using GameObjects.Square;
 using UI;
 using UnityEngine;
@@ -16,7 +17,7 @@ namespace Spawners.SquareSpawner
     {
         [Inject]
         public void Construct(
-            GameManagers.GameManager gameManager, 
+            GameManager gameManager, 
             GameUI gameUI, 
             IObjectResolver resolver, 
             SquareController squarePrefab, 

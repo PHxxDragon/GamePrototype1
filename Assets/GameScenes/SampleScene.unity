@@ -148,8 +148,7 @@ Transform:
   m_LocalPosition: {x: 9.50985, y: 0.34626, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 827577005}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &174588534
@@ -390,11 +389,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &827577005 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6252998496854150174, guid: db3923cf99db5374db356db36a054cdf, type: 3}
-  m_PrefabInstance: {fileID: 7902494749465781133}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &978647215
 GameObject:
   m_ObjectHideFlags: 0
@@ -910,15 +904,15 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 174588533}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 6252998496854150174, guid: db3923cf99db5374db356db36a054cdf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.50985
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6252998496854150174, guid: db3923cf99db5374db356db36a054cdf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.34626
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6252998496854150174, guid: db3923cf99db5374db356db36a054cdf, type: 3}
       propertyPath: m_LocalPosition.z
@@ -957,8 +951,12 @@ PrefabInstance:
       value: SquareSpawner
       objectReference: {fileID: 0}
     - target: {fileID: 6672516033548940964, guid: db3923cf99db5374db356db36a054cdf, type: 3}
-      propertyPath: squareSpawnerView
+      propertyPath: parent
       value: 
+      objectReference: {fileID: 174588534}
+    - target: {fileID: 6672516033548940964, guid: db3923cf99db5374db356db36a054cdf, type: 3}
+      propertyPath: parentReference.TypeName
+      value: GameManagers.SceneLifeTimeScope
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -972,6 +970,7 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 619394802}
   - {fileID: 174588533}
+  - {fileID: 7902494749465781133}
   - {fileID: 6897261053162278579}
   - {fileID: 1888410418}
   - {fileID: 1136386138}

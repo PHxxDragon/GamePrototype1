@@ -9,7 +9,6 @@ namespace GameManagers
     {
         protected override void Configure(IContainerBuilder builder)
         {
-            Debug.Log("Hello!!!");
             builder.Register<GameManager>(Lifetime.Singleton);
             builder.RegisterComponentInHierarchy<GameUI>();
         }

@@ -165,7 +165,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Container.GameLiftTimeScope
   parentReference:
     TypeName: 
+  parentLifetimeScope: {fileID: 0}
   autoRun: 1
+  findScopeInParent: 0
   autoInjectGameObjects:
   - {fileID: 6897261053162278580}
 --- !u!1 &519420028
@@ -955,9 +957,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 174588534}
     - target: {fileID: 6672516033548940964, guid: db3923cf99db5374db356db36a054cdf, type: 3}
-      propertyPath: parentReference.TypeName
-      value: GameManagers.SceneLifeTimeScope
-      objectReference: {fileID: 0}
+      propertyPath: parentLifetimeScope
+      value: 
+      objectReference: {fileID: 174588534}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

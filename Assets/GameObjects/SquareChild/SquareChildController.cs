@@ -9,12 +9,12 @@ namespace GameObjects.SquareChild
         [SerializeField] private SquareController squarePrefab;
         
         private SquareController _parent;
-        private GameManager.GameManager _gameManager;
+        private GameManagers.GameManager _gameManager;
         private GameUI _gameUI;
 
         private float _remainGrowUpTime = Constants.Constants.SquareSpawner.GrowUpTime;
 
-        public void SetGameManager(GameManager.GameManager gameManager)
+        public void SetGameManager(GameManagers.GameManager gameManager)
         {
             _gameManager = gameManager;
         }

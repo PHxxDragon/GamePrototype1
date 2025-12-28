@@ -16,7 +16,7 @@ namespace Spawners.SquareSpawner
     {
         [Inject]
         public void Construct(
-            GameManager.GameManager gameManager, 
+            GameManagers.GameManager gameManager, 
             GameUI gameUI, 
             IObjectResolver resolver, 
             SquareController squarePrefab, 
@@ -31,7 +31,7 @@ namespace Spawners.SquareSpawner
             _regionBottomRight = regionBottomRight;
         }
         
-        private GameManager.GameManager _gameManager;
+        private GameManagers.GameManager _gameManager;
         
         private GameUI _gameUI;
 

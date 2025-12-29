@@ -10,25 +10,25 @@ namespace GameObjects.Region
         public RegionController(
             [Key(InjectKeys.RotateCenter)] Transform rotateCenter, 
             [Key(InjectKeys.RotateSpeed)] float rotateSpeed, 
-            Transform transform
+            RegionView regionView
         )
         {
             _rotateCenter = rotateCenter;
             _rotateSpeed = rotateSpeed;
-            _transform = transform;
+            _regionView = regionView;
         }
         
         private readonly Transform _rotateCenter;
         private readonly float _rotateSpeed;
-        private readonly Transform _transform;
+        private readonly RegionView _regionView;
         
-        public Transform RegionTransform => _transform;
+        public Transform RegionTransform => _regionView.transform;
 
-        public float Radius => new Vector2(_transform.localScale.x,  _transform.localScale.y).magnitude / 2;
+        public float Radius => new Vector2(_regionView.transform.localScale.x,  _regionView.transform.localScale.y).magnitude / 2;
 
         public void Tick()
         {
-            _transform.RotateAround(_rotateCenter.position, Vector3.back, _rotateSpeed * Time.deltaTime);
+            _regionView.transform.RotateAround(_rotateCenter.position, Vector3.back, _rotateSpeed * Time.deltaTime);
         }
     }
 }

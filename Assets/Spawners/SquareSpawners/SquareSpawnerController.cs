@@ -26,7 +26,7 @@ namespace Spawners.SquareSpawners
             _regionBottomRight = regionBottomRight;
         }
         
-        private GameManagers.GameManager _gameManager;
+        private GameManager _gameManager;
         
         private GameUI _gameUI;
 

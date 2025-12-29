@@ -1,9 +1,11 @@
-using GameObjects.Square;
+using GameObjects.Region;
+using GameObjects.Target;
+using Spawners.SquareSpawners;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 
-namespace Spawners.SquareSpawners
+namespace Spawners.TargetSpawners
 {
     public enum InjectKeys
     {
@@ -11,16 +13,16 @@ namespace Spawners.SquareSpawners
         BottomRight
     }
     
-    public class SquareSpawnerLifeTimeScope : LifetimeScope
+    public class TargetSpawnerLifeTimeScope: LifetimeScope
     {
-        [SerializeField] private SquareController squarePrefab;
+        [SerializeField] private TargetController targetPrefab;
         [SerializeField] private Transform regionTopLeft;
         [SerializeField] private Transform regionBottomRight;
-
+        
         protected override void Configure(IContainerBuilder builder)
         {
-            builder.RegisterInstance(squarePrefab);
-            builder.RegisterEntryPoint<SquareSpawnerController>();
+            builder.RegisterInstance(targetPrefab);
+            builder.RegisterEntryPoint<TargetSpawnerController>();
             builder.RegisterInstance(regionTopLeft).Keyed(InjectKeys.TopLeft);
             builder.RegisterInstance(regionBottomRight).Keyed(InjectKeys.BottomRight);
         }

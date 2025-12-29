@@ -71,7 +71,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1113033067528893606}
-  - component: {fileID: 2950384372337434007}
+  - component: {fileID: 5001927055753188849}
   m_Layer: 0
   m_Name: TargetSpawner
   m_TagString: Untagged
@@ -96,7 +96,7 @@ Transform:
   - {fileID: 5693552694702875946}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2950384372337434007
+--- !u!114 &5001927055753188849
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -105,11 +105,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 6426236499432763083}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd890e3ed2261c44b81a97801437c570, type: 3}
+  m_Script: {fileID: 11500000, guid: 252d6cfefcefb40efaf2d8ad74547331, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: '::'
-  gameManager: {fileID: 0}
-  targetPrefab: {fileID: 1341421674892544385, guid: 5227b4cdcf12669458cc000918123458, type: 3}
+  m_EditorClassIdentifier: Assembly-CSharp::Spawners.TargetSpawners.TargetSpawnerLifeTimeScope
+  parentReference:
+    TypeName: 
+  parentLifetimeScope: {fileID: 0}
+  autoRun: 1
+  findScopeInParent: 1
+  autoInjectGameObjects: []
+  targetPrefab: {fileID: 1341421674892544385, guid: 2e2d878dd624527a7898ee2e4c75853e, type: 3}
   regionTopLeft: {fileID: 4105273345578561174}
   regionBottomRight: {fileID: 5693552694702875946}
   regionController: {fileID: 0}

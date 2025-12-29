@@ -83,10 +83,9 @@ MonoBehaviour:
   autoRun: 1
   findScopeInParent: 1
   autoInjectGameObjects: []
-  parent: {fileID: 0}
   squarePrefab: {fileID: 926860894866518141, guid: 274b8aeb05886a5fc9405d5a7a53f90d, type: 3}
-  topLeft: {fileID: 6657363548939522223}
-  bottomRight: {fileID: 4384200908703631778}
+  regionTopLeft: {fileID: 6657363548939522223}
+  regionBottomRight: {fileID: 4384200908703631778}
 --- !u!1 &7390350745724671979
 GameObject:
   m_ObjectHideFlags: 0

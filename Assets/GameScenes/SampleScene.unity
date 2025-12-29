@@ -170,6 +170,7 @@ MonoBehaviour:
   findScopeInParent: 0
   autoInjectGameObjects:
   - {fileID: 6897261053162278580}
+  regionController: {fileID: 1506899351}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -886,11 +887,20 @@ PrefabInstance:
       propertyPath: regionController
       value: 
       objectReference: {fileID: 1506899351}
+    - target: {fileID: 5001927055753188849, guid: b42e7bcc56cc5f04f8fff82156da474c, type: 3}
+      propertyPath: regionController
+      value: 
+      objectReference: {fileID: 1506899351}
+    - target: {fileID: 5001927055753188849, guid: b42e7bcc56cc5f04f8fff82156da474c, type: 3}
+      propertyPath: parentLifetimeScope
+      value: 
+      objectReference: {fileID: 174588534}
     - target: {fileID: 6426236499432763083, guid: b42e7bcc56cc5f04f8fff82156da474c, type: 3}
       propertyPath: m_Name
       value: TargetSpawner
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2950384372337434007, guid: b42e7bcc56cc5f04f8fff82156da474c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

@@ -168,8 +168,7 @@ MonoBehaviour:
   parentLifetimeScope: {fileID: 0}
   autoRun: 1
   findScopeInParent: 0
-  autoInjectGameObjects:
-  - {fileID: 6897261053162278580}
+  autoInjectGameObjects: []
   regionController: {fileID: 1506899351}
 --- !u!1 &519420028
 GameObject:
@@ -905,11 +904,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b42e7bcc56cc5f04f8fff82156da474c, type: 3}
---- !u!1 &6897261053162278580 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6426236499432763083, guid: b42e7bcc56cc5f04f8fff82156da474c, type: 3}
-  m_PrefabInstance: {fileID: 6897261053162278579}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7902494749465781133
 PrefabInstance:
   m_ObjectHideFlags: 0

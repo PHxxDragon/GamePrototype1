@@ -6,8 +6,8 @@ namespace GameObjects.SquareChild
     public class SquareChildView: MonoBehaviour
     {
         private IObjectResolver _objectResolver;
-        
-        public SquareChildController SquareChildController { get; private set; }
+        private SquareChildController _squareChildController;
+        public SquareChildController SquareChildController => _squareChildController ?? _objectResolver.Resolve<SquareChildController>();
 
         [Inject]
         public void Construct(IObjectResolver resolver)
@@ -17,7 +17,7 @@ namespace GameObjects.SquareChild
 
         private void Start()
         {
-            SquareChildController = _objectResolver.Resolve<SquareChildController>();
+            _squareChildController = _objectResolver.Resolve<SquareChildController>();
         }
     }
 }

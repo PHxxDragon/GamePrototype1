@@ -16,7 +16,7 @@ namespace Spawners.TargetSpawners
             [Key(InjectKeys.TopLeft)] Transform regionTopLeft,
             [Key(InjectKeys.BottomRight)] Transform regionBottomRight,
             TargetController targetPrefab,
-            RegionController regionController,
+            RegionView regionView,
             IObjectResolver resolver
         )
         {
@@ -25,13 +25,13 @@ namespace Spawners.TargetSpawners
             _regionBottomRight = regionBottomRight;
             _targetPrefab = targetPrefab;
             _resolver = resolver;
-            _regionController = regionController;
+            _regionView = regionView;
         }
         
         private TargetController _targetPrefab;
         private Transform _regionTopLeft;
         private Transform _regionBottomRight;
-        private RegionController _regionController;
+        private RegionView _regionView;
         private IObjectResolver _resolver;
         private float _remainTime;
         private GameManager _gameManager;
@@ -53,10 +53,10 @@ namespace Spawners.TargetSpawners
                 var targetController = _resolver.Instantiate(_targetPrefab, newPosition, Quaternion.identity);
                 _gameManager.TargetComponents.Add(targetController);
 
-                if (Vector3.Distance(_regionController.transform.position, targetController.transform.position) <
-                    _regionController.Radius)
+                if (Vector3.Distance(_regionView.RegionController.RegionTransform.position, targetController.transform.position) <
+                    _regionView.RegionController.Radius)
                 {
-                    targetController.transform.parent = _regionController.transform;
+                    targetController.transform.parent = _regionView.RegionController.RegionTransform;
                 }
             }
         }

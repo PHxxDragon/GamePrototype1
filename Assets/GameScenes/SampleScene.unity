@@ -169,7 +169,19 @@ MonoBehaviour:
   autoRun: 1
   findScopeInParent: 0
   autoInjectGameObjects: []
-  regionController: {fileID: 1506899351}
+  regionView: {fileID: 428339697}
+  gameUI: {fileID: 1888410419}
+--- !u!114 &428339697 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9028781068668350558, guid: 06346e54af5f79b0a8a65afc942b6607, type: 3}
+  m_PrefabInstance: {fileID: 1506899350}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 830051af462064f53bd13ea4d52360aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameObjects.Region.RegionView
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -517,6 +529,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Region
       objectReference: {fileID: 0}
+    - target: {fileID: 4567398364040500717, guid: 06346e54af5f79b0a8a65afc942b6607, type: 3}
+      propertyPath: rotateCenter
+      value: 
+      objectReference: {fileID: 978647216}
+    - target: {fileID: 4567398364040500717, guid: 06346e54af5f79b0a8a65afc942b6607, type: 3}
+      propertyPath: parentLifetimeScope
+      value: 
+      objectReference: {fileID: 174588534}
     - target: {fileID: 5141637662788507178, guid: 06346e54af5f79b0a8a65afc942b6607, type: 3}
       propertyPath: m_LocalPosition.x
       value: -9.68
@@ -562,17 +582,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06346e54af5f79b0a8a65afc942b6607, type: 3}
---- !u!114 &1506899351 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1521471393502836900, guid: 06346e54af5f79b0a8a65afc942b6607, type: 3}
-  m_PrefabInstance: {fileID: 1506899350}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6620ce7044f1063b896c1775542c0c21, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Objects.Region.RegionController
 --- !u!1 &1643427565
 GameObject:
   m_ObjectHideFlags: 0
@@ -885,11 +894,11 @@ PrefabInstance:
     - target: {fileID: 2950384372337434007, guid: b42e7bcc56cc5f04f8fff82156da474c, type: 3}
       propertyPath: regionController
       value: 
-      objectReference: {fileID: 1506899351}
+      objectReference: {fileID: 0}
     - target: {fileID: 5001927055753188849, guid: b42e7bcc56cc5f04f8fff82156da474c, type: 3}
       propertyPath: regionController
       value: 
-      objectReference: {fileID: 1506899351}
+      objectReference: {fileID: 0}
     - target: {fileID: 5001927055753188849, guid: b42e7bcc56cc5f04f8fff82156da474c, type: 3}
       propertyPath: parentLifetimeScope
       value: 

@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5141637662788507178}
   - component: {fileID: 8053309221207754215}
-  - component: {fileID: 1521471393502836900}
+  - component: {fileID: 4567398364040500717}
+  - component: {fileID: 9028781068668350558}
   m_Layer: 0
   m_Name: Region
   m_TagString: Untagged
@@ -92,7 +93,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &1521471393502836900
+--- !u!114 &4567398364040500717
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -101,8 +102,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 4351813337054909699}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6620ce7044f1063b896c1775542c0c21, type: 3}
+  m_Script: {fileID: 11500000, guid: a997635c7e08f400c9d5add4a548c3fb, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Objects.Region.RegionController
+  m_EditorClassIdentifier: Assembly-CSharp::RegionLifeTimeScope
+  parentReference:
+    TypeName: 
+  parentLifetimeScope: {fileID: 0}
+  autoRun: 1
+  findScopeInParent: 0
+  autoInjectGameObjects: []
   rotateCenter: {fileID: 0}
   rotateSpeed: 30
+  regionView: {fileID: 9028781068668350558}
+--- !u!114 &9028781068668350558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4351813337054909699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 830051af462064f53bd13ea4d52360aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameObjects.Region.RegionView

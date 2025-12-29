@@ -8,14 +8,13 @@ namespace GameManagers
 {
     public class SceneLifeTimeScope: LifetimeScope
     {
-        [SerializeField] private RegionController regionController;
+        [SerializeField] private RegionView regionView;
         [SerializeField] private GameUI gameUI;
-        [SerializeField] private GameObject regionCenter;
         
         protected override void Configure(IContainerBuilder builder)
         {
             builder.Register<GameManager>(Lifetime.Singleton);
-            builder.RegisterInstance(regionController);
+            builder.RegisterInstance(regionView);
             builder.RegisterInstance(gameUI);
         }
     }

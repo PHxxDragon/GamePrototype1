@@ -19,7 +19,7 @@ namespace GameObjects.Square
             [Key(InjectKeys.RemainHealth)] float remainHealth,
             SpriteRenderer spriteRenderer,
             [Key(InjectKeys.ScoreCircle)] GameObject scoreCircle,
-            [Key(InjectKeys.Prefab)] SquareChildController childPrefab,
+            SquareChildFactory squareChildFactory,
             SquareView squareView
         )
         {
@@ -27,8 +27,8 @@ namespace GameObjects.Square
             _gameUI = gameUI;
             _remainHealth = remainHealth;
             _spriteRenderer = spriteRenderer;
-            _childPrefab = childPrefab;
             _scoreCircle = scoreCircle;
+            _squareChildFactory = squareChildFactory;
             _squareView = squareView;
             
         }
@@ -38,8 +38,8 @@ namespace GameObjects.Square
         private float _remainHealth;
         private readonly SpriteRenderer _spriteRenderer;
         private readonly GameObject _scoreCircle;
-        private readonly SquareChildController _childPrefab;
         private readonly SquareView _squareView;
+        private readonly SquareChildFactory _squareChildFactory;
         
         private int _remainScoreToHaveChild = Constants.Constants.SquareSpawner.ScoreToHaveChild;
 
@@ -76,10 +76,8 @@ namespace GameObjects.Square
                         if (_remainScoreToHaveChild <= 0)
                         {
                             _remainScoreToHaveChild =  Constants.Constants.SquareSpawner.ScoreToHaveChild;
-                            SquareChildController child = Object.Instantiate(_childPrefab, _squareView.transform.position, Quaternion.identity);
-                            child.SetParent(_squareView);
-                            child.SetGameManager(_gameManager);
-                            child.SetGameUI(_gameUI);
+                            var squareChildView = _squareChildFactory.CreateSquareChild(_squareView.transform.position);
+                            squareChildView.SquareChildController.SetParent(_squareView);
                         }
                     }
 

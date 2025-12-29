@@ -1,42 +1,38 @@
 using GameObjects.Square;
-using UI;
 using UnityEngine;
+using VContainer;
+using VContainer.Unity;
 
 namespace GameObjects.SquareChild
 {
-    public class SquareChildController : MonoBehaviour
+    public class SquareChildController : ITickable
     {
-        [SerializeField] private SquareView squarePrefab;
         
+        [Inject]
+        public SquareChildController(SquareFactory squareFactory, SquareChildView squareChildView)
+        {
+            _squareFactory = squareFactory;
+            _squareChildView = squareChildView;
+        }
+        
+        private readonly SquareFactory _squareFactory;
+        private readonly SquareChildView _squareChildView;
         private SquareView _parent;
-        private GameManagers.GameManager _gameManager;
-        private GameUI _gameUI;
-
         private float _remainGrowUpTime = Constants.Constants.SquareSpawner.GrowUpTime;
-
-        public void SetGameManager(GameManagers.GameManager gameManager)
-        {
-            _gameManager = gameManager;
-        }
-
-        public void SetGameUI(GameUI gameUI)
-        {
-            _gameUI = gameUI;
-        }
 
         public void SetParent(SquareView parent)
         {
             _parent = parent;
         }
 
-        void Update()
+        public void Tick()
         {
             if (_parent)
             {
-                if (Vector3.Distance(transform.position, _parent.transform.position) > 0.1f)
+                if (Vector3.Distance(_squareChildView.transform.position, _parent.transform.position) > 0.1f)
                 {
-                    Vector3 direction = _parent.transform.position - transform.position;
-                    transform.position += direction.normalized * (Time.deltaTime * 10f);
+                    Vector3 direction = _parent.transform.position - _squareChildView.transform.position;
+                    _squareChildView.transform.position += direction.normalized * (Time.deltaTime * 10f);
                 }
                 else
                 {
@@ -48,13 +44,9 @@ namespace GameObjects.SquareChild
             {
                 for (var i = 0; i < 3; i++)
                 {
-                    var squareController = Instantiate(squarePrefab, transform.position, Quaternion.identity);
-                    // TODO: Fix bug
-                    /*squareController.SetGameManager(_gameManager);
-                    squareController.SetGameUI(_gameUI);*/
+                    _squareFactory.CreateSquare(_squareChildView.transform.position);
                 }
-                
-                Destroy(gameObject);
+                Object.Destroy(_squareChildView.gameObject);
             }
         }
     }

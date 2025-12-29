@@ -16,7 +16,6 @@ namespace GameObjects.Square
         [SerializeField] private float remainHealth = 10f;
         [SerializeField] private SpriteRenderer spriteRenderer;
         [SerializeField] private GameObject scoreCircle;
-        [SerializeField] private SquareChildController childPrefab;
         [SerializeField] private SquareView squareView;
 
         protected override void Configure(IContainerBuilder builder)
@@ -24,7 +23,6 @@ namespace GameObjects.Square
             builder.RegisterInstance(remainHealth).Keyed(InjectKeys.RemainHealth);
             builder.RegisterInstance(spriteRenderer);
             builder.RegisterInstance(scoreCircle).Keyed(InjectKeys.ScoreCircle);
-            builder.RegisterInstance(childPrefab).Keyed(InjectKeys.Prefab);
             builder.RegisterEntryPoint<SquareController>().As<SquareController>();
             builder.RegisterComponent(squareView);
         }

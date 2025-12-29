@@ -5,14 +5,8 @@ using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 
-namespace Spawners.SquareSpawner
+namespace Spawners.SquareSpawners
 {
-    public enum InjectKeys
-    {
-        TopLeft,
-        BottomRight
-    }
-    
     public class SquareSpawnerController: IStartable, ITickable
     {
         [Inject]

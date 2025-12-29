@@ -6,9 +6,9 @@ namespace GameObjects.SquareChild
 {
     public class SquareChildController : MonoBehaviour
     {
-        [SerializeField] private SquareController squarePrefab;
+        [SerializeField] private SquareView squarePrefab;
         
-        private SquareController _parent;
+        private SquareView _parent;
         private GameManagers.GameManager _gameManager;
         private GameUI _gameUI;
 
@@ -24,7 +24,7 @@ namespace GameObjects.SquareChild
             _gameUI = gameUI;
         }
 
-        public void SetParent(SquareController parent)
+        public void SetParent(SquareView parent)
         {
             _parent = parent;
         }
@@ -49,8 +49,9 @@ namespace GameObjects.SquareChild
                 for (var i = 0; i < 3; i++)
                 {
                     var squareController = Instantiate(squarePrefab, transform.position, Quaternion.identity);
-                    squareController.SetGameManager(_gameManager);
-                    squareController.SetGameUI(_gameUI);
+                    // TODO: Fix bug
+                    /*squareController.SetGameManager(_gameManager);
+                    squareController.SetGameUI(_gameUI);*/
                 }
                 
                 Destroy(gameObject);

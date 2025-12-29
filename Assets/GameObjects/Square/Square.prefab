@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7349170310466268248}
   - component: {fileID: 2731227251832262394}
-  - component: {fileID: 926860894866518141}
+  - component: {fileID: 5563980660677095649}
+  - component: {fileID: 2510364233595134168}
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
@@ -93,7 +94,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &926860894866518141
+--- !u!114 &5563980660677095649
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -102,15 +103,32 @@ MonoBehaviour:
   m_GameObject: {fileID: 7462175617346535979}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e00f6b27d9ea4ae6a5e2b7ea36c9aec, type: 3}
+  m_Script: {fileID: 11500000, guid: 63b2086505fe946ebb4d5fef721c6d3a, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: '::'
-  gameManager: {fileID: 0}
-  gameUI: {fileID: 0}
+  m_EditorClassIdentifier: Assembly-CSharp::GameObjects.Square.SquareView
+--- !u!114 &2510364233595134168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7462175617346535979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c15e699fbea94b7faaee525e0553d18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameObjects.Square.SquareLifeTimeScope
+  parentReference:
+    TypeName: 
+  parentLifetimeScope: {fileID: 0}
+  autoRun: 1
+  findScopeInParent: 1
+  autoInjectGameObjects: []
   remainHealth: 10
   spriteRenderer: {fileID: 2731227251832262394}
   scoreCircle: {fileID: 7617222298903686725}
   childPrefab: {fileID: -5320510622591345842, guid: 87c7be7e1e5ea23519a874e8bb1e2666, type: 3}
+  squareView: {fileID: 5563980660677095649}
 --- !u!1 &7617222298903686725
 GameObject:
   m_ObjectHideFlags: 0

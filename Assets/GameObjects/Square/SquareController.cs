@@ -5,29 +5,43 @@ using GameObjects.SquareChild;
 using GameObjects.Target;
 using UI;
 using UnityEngine;
+using VContainer;
+using VContainer.Unity;
 
 namespace GameObjects.Square
 {
-    public class SquareController : MonoBehaviour
+    public class SquareController: ITickable
     {
-        [SerializeField] private GameManager gameManager;
-        [SerializeField] private GameUI gameUI;
-        [SerializeField] private float remainHealth = 10f;
-        [SerializeField] private SpriteRenderer spriteRenderer;
-        [SerializeField] private GameObject scoreCircle;
-        [SerializeField] private SquareChildController childPrefab;
-
+        [Inject]
+        public SquareController(
+            GameManager gameManager,
+            GameUI gameUI,
+            [Key(InjectKeys.RemainHealth)] float remainHealth,
+            SpriteRenderer spriteRenderer,
+            [Key(InjectKeys.ScoreCircle)] GameObject scoreCircle,
+            [Key(InjectKeys.Prefab)] SquareChildController childPrefab,
+            SquareView squareView
+        )
+        {
+            _gameManager = gameManager;
+            _gameUI = gameUI;
+            _remainHealth = remainHealth;
+            _spriteRenderer = spriteRenderer;
+            _childPrefab = childPrefab;
+            _scoreCircle = scoreCircle;
+            _squareView = squareView;
+            
+        }
+        
+        private readonly GameManager _gameManager;
+        private readonly GameUI _gameUI;
+        private float _remainHealth;
+        private readonly SpriteRenderer _spriteRenderer;
+        private readonly GameObject _scoreCircle;
+        private readonly SquareChildController _childPrefab;
+        private readonly SquareView _squareView;
+        
         private int _remainScoreToHaveChild = Constants.Constants.SquareSpawner.ScoreToHaveChild;
-
-        public void SetGameManager(GameManager gm)
-        {
-            gameManager = gm;
-        }
-
-        public void SetGameUI(GameUI ui)
-        {
-            gameUI = ui;
-        }
 
         private TargetController _currentTarget;
         private float _currentStopTime = Constants.Constants.SquareSpawner.StopTime;
@@ -39,59 +53,59 @@ namespace GameObjects.Square
             return targets[random];
         }
 
-        private void Update()
+        public void Tick()
         {
             if (!_currentTarget)
             {
-                _currentTarget = SelectTarget(gameManager.TargetComponents);
+                _currentTarget = SelectTarget(_gameManager.TargetComponents);
             } 
             else
             {
-                var currentDistance = Vector3.Distance(transform.position, _currentTarget.transform.position);
+                var currentDistance = Vector3.Distance(_squareView.transform.position, _currentTarget.transform.position);
                 if (Mathf.Abs(currentDistance) < Constants.Constants.SquareSpawner.StopRadius)
                 {
                     _currentStopTime -= Time.deltaTime;
                     if (_currentStopTime <= 0f)
                     {
-                        _currentTarget = SelectTarget(gameManager.TargetComponents);
+                        _currentTarget = SelectTarget(_gameManager.TargetComponents);
                         _currentStopTime = Constants.Constants.SquareSpawner.StopTime;
-                        gameUI.AddScore(1);
+                        _gameUI.AddScore(1);
                         _ = ShowCoin();
                         _remainScoreToHaveChild--;
 
                         if (_remainScoreToHaveChild <= 0)
                         {
                             _remainScoreToHaveChild =  Constants.Constants.SquareSpawner.ScoreToHaveChild;
-                            SquareChildController child = Instantiate(childPrefab, transform.position, Quaternion.identity);
-                            child.SetParent(this);
-                            child.SetGameManager(gameManager);
-                            child.SetGameUI(gameUI);
+                            SquareChildController child = Object.Instantiate(_childPrefab, _squareView.transform.position, Quaternion.identity);
+                            child.SetParent(_squareView);
+                            child.SetGameManager(_gameManager);
+                            child.SetGameUI(_gameUI);
                         }
                     }
 
-                    if (remainHealth <= 10f)
+                    if (_remainHealth <= 10f)
                     {
-                        remainHealth += Time.deltaTime;
+                        _remainHealth += Time.deltaTime;
                     }
 
-                    if (remainHealth >= 3f)
+                    if (_remainHealth >= 3f)
                     {
-                        spriteRenderer.color = new Color(0.26f, 0.7f, 0.33f);
+                        _spriteRenderer.color = new Color(0.26f, 0.7f, 0.33f);
                     }
                 }
                 else
                 {
-                    transform.position = Vector3.MoveTowards(transform.position, _currentTarget.transform.position, Constants.Constants.SquareSpawner.MoveSpeed * Time.deltaTime);
-                    remainHealth -= Time.deltaTime;
+                    _squareView.transform.position = Vector3.MoveTowards(_squareView.transform.position, _currentTarget.transform.position, Constants.Constants.SquareSpawner.MoveSpeed * Time.deltaTime);
+                    _remainHealth -= Time.deltaTime;
                     
-                    if (remainHealth <= 3f)
+                    if (_remainHealth <= 3f)
                     {
-                        spriteRenderer.color = Color.darkGoldenRod;
+                        _spriteRenderer.color = Color.darkGoldenRod;
                     } 
                     
-                    if (remainHealth <= 0f)
+                    if (_remainHealth <= 0f)
                     {
-                        Destroy(gameObject);
+                        Object.Destroy(_squareView.gameObject);
                     }
                 }
             }
@@ -99,9 +113,9 @@ namespace GameObjects.Square
 
         private async UniTaskVoid ShowCoin()
         {
-            scoreCircle.SetActive(true);
+            _scoreCircle.SetActive(true);
             await UniTask.WaitForSeconds(0.4f);
-            scoreCircle.SetActive(false);
+            _scoreCircle.SetActive(false);
         }
     }
 }

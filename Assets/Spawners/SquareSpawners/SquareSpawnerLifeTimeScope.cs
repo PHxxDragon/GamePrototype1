@@ -13,7 +13,7 @@ namespace Spawners.SquareSpawners
     
     public class SquareSpawnerLifeTimeScope : LifetimeScope
     {
-        [SerializeField] private SquareController squarePrefab;
+        [SerializeField] private SquareView squarePrefab;
         [SerializeField] private Transform regionTopLeft;
         [SerializeField] private Transform regionBottomRight;
 

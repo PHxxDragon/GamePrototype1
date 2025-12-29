@@ -1,6 +1,5 @@
 using GameManagers;
 using GameObjects.Square;
-using UI;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
@@ -12,33 +11,28 @@ namespace Spawners.SquareSpawners
         [Inject]
         public void Construct(
             GameManager gameManager, 
-            GameUI gameUI, 
             IObjectResolver resolver, 
-            SquareController squarePrefab, 
+            SquareView squarePrefab, 
             [Key(InjectKeys.TopLeft)] Transform regionTopLeft,
-            [Key(InjectKeys.BottomRight)] Transform regionBottomRight)
+            [Key(InjectKeys.BottomRight)] Transform regionBottomRight,
+            LifetimeScope currentScope
+        )
         {
             _gameManager = gameManager;
-            _gameUI = gameUI;
             _resolver = resolver;
             _squarePrefab = squarePrefab;
             _regionTopLeft = regionTopLeft;
             _regionBottomRight = regionBottomRight;
+            _currentScope = currentScope;
         }
         
         private GameManager _gameManager;
-        
-        private GameUI _gameUI;
-
         private float _remainTime;
-        
         private IObjectResolver _resolver;
-        
-        private SquareController _squarePrefab;
-        
+        private SquareView _squarePrefab;
         private Transform _regionTopLeft;
-        
         private Transform _regionBottomRight;
+        private LifetimeScope _currentScope;
 
         public void Start()
         {
@@ -53,11 +47,12 @@ namespace Spawners.SquareSpawners
                 _remainTime += Constants.Constants.SquareSpawner.SpawnTime;
 
                 Vector3 newPosition = new(Random.Range(_regionTopLeft.position.x, _regionBottomRight.position.x), Random.Range(_regionTopLeft.position.y, _regionBottomRight.position.y), 0);
-                
-                var squareController = _resolver.Instantiate(_squarePrefab, newPosition, Quaternion.identity);
-                squareController.SetGameManager(_gameManager);
-                squareController.SetGameUI(_gameUI);
-                _gameManager.SquareComponents.Add(squareController);
+            
+                using (LifetimeScope.EnqueueParent(_currentScope))
+                {
+                    var squareView = _resolver.Instantiate(_squarePrefab, newPosition, Quaternion.identity);
+                    _gameManager.SquareComponents.Add(squareView.SquareController);
+                }
             }
         }
     }

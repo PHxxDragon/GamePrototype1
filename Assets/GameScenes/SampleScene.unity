@@ -169,6 +169,7 @@ MonoBehaviour:
   autoRun: 1
   findScopeInParent: 0
   autoInjectGameObjects: []
+  squarePrefab: {fileID: 5563980660677095649, guid: 274b8aeb05886a5fc9405d5a7a53f90d, type: 3}
   regionView: {fileID: 428339697}
   gameUI: {fileID: 1888410419}
 --- !u!114 &428339697 stripped

@@ -43,6 +43,15 @@ namespace GameObjects.Squares
                 
                 Destroy(gameObject);
             }
+
+            transform.localScale += Vector3.one * Time.deltaTime;
+            if (transform.localScale.magnitude > 5f)
+            {
+                for (var i = 0; i < 5; i++)
+                {
+                    _squareFactory.CreateSquare(transform.position);
+                }
+            }
         }
     }
 }

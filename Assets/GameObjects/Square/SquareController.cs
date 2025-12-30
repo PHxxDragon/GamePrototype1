@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using GameManagers;
-using GameObjects.SquareChild;
 using GameObjects.Target;
 using Sisus.Init;
 using UI;
@@ -9,22 +8,23 @@ using UnityEngine;
 
 namespace GameObjects.Square
 {
-    public class SquareController : MonoBehaviour<GameManager, GameUI>
+    public class SquareController : MonoBehaviour<GameManager, GameUI, SquareFactory>
     {
         [SerializeField] private float remainHealth = 10f;
         [SerializeField] private SpriteRenderer spriteRenderer;
         [SerializeField] private GameObject scoreCircle;
-        [SerializeField] private SquareChildController childPrefab;
         
-        protected override void Init(GameManager gameManager, GameUI gameUI)
+        protected override void Init(GameManager gameManager, GameUI gameUI, SquareFactory squareFactory)
         {
             _gameManager = gameManager;
             _gameUI = gameUI;
+            _squareFactory = squareFactory;
         }
         
         private GameManager _gameManager;
         private GameUI _gameUI;
         private TargetController _currentTarget;
+        private SquareFactory _squareFactory;
         
         private int _remainScoreToHaveChild = Constants.Constants.SquareSpawner.ScoreToHaveChild;
         private float _currentStopTime = Constants.Constants.SquareSpawner.StopTime;
@@ -59,7 +59,7 @@ namespace GameObjects.Square
                         if (_remainScoreToHaveChild <= 0)
                         {
                             _remainScoreToHaveChild =  Constants.Constants.SquareSpawner.ScoreToHaveChild;
-                            var child = Instantiate(childPrefab, transform.position, Quaternion.identity);
+                            var child = _squareFactory.CreateSquareChild(transform.position);
                             child.SetParent(this);
                         }
                     }

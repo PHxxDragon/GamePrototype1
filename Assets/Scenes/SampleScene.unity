@@ -512,6 +512,70 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1185853690
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1185853692}
+  - component: {fileID: 1185853691}
+  - component: {fileID: 1185853693}
+  m_Layer: 0
+  m_Name: SquareFactory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1185853691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1185853690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faa7e41745dff441c94d07d371488dd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameObjects.Square.SquareFactory
+  squarePrefab: {fileID: 926860894866518141, guid: 274b8aeb05886a5fc9405d5a7a53f90d, type: 3}
+  squareChildPrefab: {fileID: -5320510622591345842, guid: 87c7be7e1e5ea23519a874e8bb1e2666, type: 3}
+--- !u!4 &1185853692
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1185853690}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -12.20861, y: 0.65856, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1185853693
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1185853690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a0a779e9bbcba646a5e1b890dbb3f5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: InitArgs::Sisus.Init.Internal.ServiceTag
+  service: {fileID: 1185853691}
+  toClients: 4
+  definingType:
+    scriptAssetGuid: faa7e41745dff441c94d07d371488dd9
+    TypeNameAndAssembly: GameObjects.Square.SquareFactory, Assembly-CSharp
 --- !u!1001 &1506899350
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1032,6 +1096,9 @@ MonoBehaviour:
   secondArgument:
     reference: {fileID: 0}
     value: {fileID: 0}
+  thirdArgument:
+    reference: {fileID: 0}
+    value: {fileID: 0}
   disposeArgumentsOnDestroy: 0
   asyncArguments: 0
 --- !u!1660057539 &9223372036854775807
@@ -1041,6 +1108,7 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 619394802}
   - {fileID: 174588533}
+  - {fileID: 1185853692}
   - {fileID: 7902494749465781133}
   - {fileID: 6897261053162278579}
   - {fileID: 1888410418}

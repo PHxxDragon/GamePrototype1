@@ -1,15 +1,19 @@
 using GameObjects.Square;
+using Sisus.Init;
 using UnityEngine;
 
 namespace GameObjects.SquareChild
 {
-    public class SquareChildController : MonoBehaviour
+    public class SquareChildController : MonoBehaviour<SquareFactory>
     {
-        [SerializeField] private SquareController squarePrefab;
-        
         private SquareController _parent;
-
+        private SquareFactory _squareFactory;
         private float _remainGrowUpTime = Constants.Constants.SquareSpawner.GrowUpTime;
+        
+        protected override void Init(SquareFactory squareFactory)
+        {
+            _squareFactory = squareFactory;
+        }
 
         public void SetParent(SquareController parent)
         {
@@ -35,8 +39,7 @@ namespace GameObjects.SquareChild
             {
                 for (var i = 0; i < 3; i++)
                 {
-                    var squareController = Instantiate(squarePrefab);
-                    squareController.transform.position = transform.position;
+                    _squareFactory.CreateSquare(transform.position);
                 }
                 
                 Destroy(gameObject);

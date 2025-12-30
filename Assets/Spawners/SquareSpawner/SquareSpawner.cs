@@ -3,12 +3,10 @@ using GameObjects.Square;
 using Sisus.Init;
 using UI;
 using UnityEngine;
-using UnityEngine.Assertions;
-using UnityEngine.Serialization;
 
 namespace Spawners.SquareSpawner
 {
-    public class SquareSpawner : MonoBehaviour<GameManager, GameUI>
+    public class SquareSpawner : MonoBehaviour<GameManager, GameUI, SquareFactory>
     {
         [SerializeField]
         private Transform regionTopLeft;
@@ -16,22 +14,20 @@ namespace Spawners.SquareSpawner
         [SerializeField]
         private Transform regionBottomRight;
         
-        [SerializeField]
-        private SquareController squarePrefab;
-        
         private GameManager _gameManager;
         private GameUI _gameUI;
+        private SquareFactory _squareFactory;
         private float _remainTime;
 
-        protected override void Init(GameManager gameManager, GameUI gameUI)
+        protected override void Init(GameManager gameManager, GameUI gameUI, SquareFactory squareFactory)
         {
             _gameManager = gameManager;
             _gameUI = gameUI;
+            _squareFactory = squareFactory;
         }
 
         private void Start()
         {
-            Assert.IsNotNull(squarePrefab);
             _remainTime = Constants.Constants.SquareSpawner.SpawnTime;
         }
 
@@ -43,7 +39,7 @@ namespace Spawners.SquareSpawner
                 _remainTime += Constants.Constants.SquareSpawner.SpawnTime;
 
                 Vector3 newPosition = new(Random.Range(regionTopLeft.position.x, regionBottomRight.position.x), Random.Range(regionTopLeft.position.y, regionBottomRight.position.y), 0);
-                var squareController = squarePrefab.Instantiate(_gameManager, _gameUI);
+                var squareController = _squareFactory.CreateSquare(newPosition);
                 squareController.transform.position = newPosition;
                 _gameManager.SquareComponents.Add(squareController);
             }

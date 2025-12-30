@@ -10,47 +10,35 @@ namespace GameObjects.SquareChild
     {
         [SerializeField] private SquareController squarePrefab;
         
-        private SquareController parent;
-        private GameManager gameManager;
-        private GameUI gameUI;
+        private SquareController _parent;
 
-        private float remainGrowUpTime = Constants.Constants.SquareSpawner.GrowUpTime;
-
-        public void SetGameManager(GameManager gameManager)
-        {
-            this.gameManager = gameManager;
-        }
-
-        public void SetGameUI(GameUI gameUI)
-        {
-            this.gameUI = gameUI;
-        }
+        private float _remainGrowUpTime = Constants.Constants.SquareSpawner.GrowUpTime;
 
         public void SetParent(SquareController parent)
         {
-            this.parent = parent;
+            _parent = parent;
         }
 
         void Update()
         {
-            if (parent)
+            if (_parent)
             {
-                if (Vector3.Distance(transform.position, parent.transform.position) > 0.1f)
+                if (Vector3.Distance(transform.position, _parent.transform.position) > 0.1f)
                 {
-                    Vector3 direction = parent.transform.position - transform.position;
+                    Vector3 direction = _parent.transform.position - transform.position;
                     transform.position += direction.normalized * (Time.deltaTime * 10f);
                 }
                 else
                 {
-                    remainGrowUpTime -= Time.deltaTime;
+                    _remainGrowUpTime -= Time.deltaTime;
                 }
             }
 
-            if (remainGrowUpTime <= 0)
+            if (_remainGrowUpTime <= 0)
             {
                 for (var i = 0; i < 3; i++)
                 {
-                    var squareController = squarePrefab.Instantiate(gameManager, gameUI);
+                    var squareController = Instantiate(squarePrefab);
                     squareController.transform.position = transform.position;
                 }
                 

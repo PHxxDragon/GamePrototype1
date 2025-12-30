@@ -15,22 +15,21 @@ namespace GameObjects.Square
         [SerializeField] private SpriteRenderer spriteRenderer;
         [SerializeField] private GameObject scoreCircle;
         [SerializeField] private SquareChildController childPrefab;
-
-        private int remainScoreToHaveChild = Constants.Constants.SquareSpawner.ScoreToHaveChild;
         
-        protected override void Init(GameManager firstArgument, GameUI secondArgument)
+        protected override void Init(GameManager gameManager, GameUI gameUI)
         {
-            gameManager = firstArgument;
-            gameUI = secondArgument;
+            _gameManager = gameManager;
+            _gameUI = gameUI;
         }
         
-        private GameManager gameManager;
-        private GameUI gameUI;
+        private GameManager _gameManager;
+        private GameUI _gameUI;
+        private TargetController _currentTarget;
+        
+        private int _remainScoreToHaveChild = Constants.Constants.SquareSpawner.ScoreToHaveChild;
+        private float _currentStopTime = Constants.Constants.SquareSpawner.StopTime;
 
-        private TargetController currentTarget;
-        private float currentStopTime = Constants.Constants.SquareSpawner.StopTime;
-
-        private TargetController SelectTarget(List<TargetController> targets)
+        private static TargetController SelectTarget(List<TargetController> targets)
         {
             if (targets.Count <= 0) return null;
             var random = Random.Range(0, targets.Count);
@@ -39,31 +38,29 @@ namespace GameObjects.Square
 
         private void Update()
         {
-            if (!currentTarget)
+            if (!_currentTarget)
             {
-                currentTarget = SelectTarget(gameManager.TargetComponents);
+                _currentTarget = SelectTarget(_gameManager.TargetComponents);
             } 
             else
             {
-                var currentDistance = Vector3.Distance(transform.position, currentTarget.transform.position);
+                var currentDistance = Vector3.Distance(transform.position, _currentTarget.transform.position);
                 if (Mathf.Abs(currentDistance) < Constants.Constants.SquareSpawner.StopRadius)
                 {
-                    currentStopTime -= Time.deltaTime;
-                    if (currentStopTime <= 0f)
+                    _currentStopTime -= Time.deltaTime;
+                    if (_currentStopTime <= 0f)
                     {
-                        currentTarget = SelectTarget(gameManager.TargetComponents);
-                        currentStopTime = Constants.Constants.SquareSpawner.StopTime;
-                        gameUI.AddScore(1);
+                        _currentTarget = SelectTarget(_gameManager.TargetComponents);
+                        _currentStopTime = Constants.Constants.SquareSpawner.StopTime;
+                        _gameUI.AddScore(1);
                         _ = ShowCoin();
-                        remainScoreToHaveChild--;
+                        _remainScoreToHaveChild--;
 
-                        if (remainScoreToHaveChild <= 0)
+                        if (_remainScoreToHaveChild <= 0)
                         {
-                            remainScoreToHaveChild =  Constants.Constants.SquareSpawner.ScoreToHaveChild;
-                            SquareChildController child = Instantiate(childPrefab, transform.position, Quaternion.identity);
+                            _remainScoreToHaveChild =  Constants.Constants.SquareSpawner.ScoreToHaveChild;
+                            var child = Instantiate(childPrefab, transform.position, Quaternion.identity);
                             child.SetParent(this);
-                            child.SetGameManager(gameManager);
-                            child.SetGameUI(gameUI);
                         }
                     }
 
@@ -79,7 +76,7 @@ namespace GameObjects.Square
                 }
                 else
                 {
-                    transform.position = Vector3.MoveTowards(transform.position, currentTarget.transform.position, Constants.Constants.SquareSpawner.MoveSpeed * Time.deltaTime);
+                    transform.position = Vector3.MoveTowards(transform.position, _currentTarget.transform.position, Constants.Constants.SquareSpawner.MoveSpeed * Time.deltaTime);
                     remainHealth -= Time.deltaTime;
                     
                     if (remainHealth <= 3f)

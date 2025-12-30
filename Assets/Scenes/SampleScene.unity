@@ -908,10 +908,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 174588532}
     - target: {fileID: 2950384372337434007, guid: b42e7bcc56cc5f04f8fff82156da474c, type: 3}
-      propertyPath: targetPrefab
-      value: 
-      objectReference: {fileID: 1341421674892544385, guid: 2e2d878dd624527a7898ee2e4c75853e, type: 3}
-    - target: {fileID: 2950384372337434007, guid: b42e7bcc56cc5f04f8fff82156da474c, type: 3}
       propertyPath: regionController
       value: 
       objectReference: {fileID: 1506899351}

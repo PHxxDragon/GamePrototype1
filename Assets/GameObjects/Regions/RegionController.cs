@@ -1,8 +1,6 @@
-using Sisus.Init;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace GameObjects.Region
+namespace GameObjects.Regions
 {
     public class RegionController : MonoBehaviour
     {

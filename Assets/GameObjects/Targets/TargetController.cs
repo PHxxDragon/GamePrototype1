@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace GameObjects.Target
+namespace GameObjects.Targets
 {
     public class TargetController : MonoBehaviour
     {

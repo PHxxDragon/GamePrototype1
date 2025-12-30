@@ -1,7 +1,7 @@
-using GameObjects.SquareChild;
+using GameObjects.SquareChilds;
 using UnityEngine;
 
-namespace GameObjects.Square
+namespace GameObjects.Squares
 {
     public class SquareFactory : MonoBehaviour
     {

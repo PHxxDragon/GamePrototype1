@@ -1,6 +1,6 @@
 using System.Collections.Generic;
-using GameObjects.Square;
-using GameObjects.Target;
+using GameObjects.Squares;
+using GameObjects.Targets;
 using UnityEngine;
 
 namespace GameManagers

@@ -1,12 +1,12 @@
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using GameManagers;
-using GameObjects.Target;
+using GameObjects.Targets;
 using Sisus.Init;
 using UI;
 using UnityEngine;
 
-namespace GameObjects.Square
+namespace GameObjects.Squares
 {
     public class SquareController : MonoBehaviour<GameManager, GameUI, SquareFactory>
     {

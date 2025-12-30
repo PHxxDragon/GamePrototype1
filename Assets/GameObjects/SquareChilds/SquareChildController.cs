@@ -1,8 +1,8 @@
-using GameObjects.Square;
+using GameObjects.Squares;
 using Sisus.Init;
 using UnityEngine;
 
-namespace GameObjects.SquareChild
+namespace GameObjects.SquareChilds
 {
     public class SquareChildController : MonoBehaviour<SquareFactory>
     {

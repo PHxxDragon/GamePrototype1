@@ -1,11 +1,10 @@
 using GameManagers;
 using Sisus.Init;
-using UI;
 using UnityEngine;
 
 namespace GameObjects.Squares
 {
-    public class SquareSpawner : MonoBehaviour<GameManager, GameUI, SquareFactory>
+    public class SquareSpawner : MonoBehaviour<GameManager, SquareFactory>
     {
         [SerializeField]
         private Transform regionTopLeft;
@@ -14,14 +13,12 @@ namespace GameObjects.Squares
         private Transform regionBottomRight;
         
         private GameManager _gameManager;
-        private GameUI _gameUI;
         private SquareFactory _squareFactory;
         private float _remainTime;
 
-        protected override void Init(GameManager gameManager, GameUI gameUI, SquareFactory squareFactory)
+        protected override void Init(GameManager gameManager, SquareFactory squareFactory)
         {
             _gameManager = gameManager;
-            _gameUI = gameUI;
             _squareFactory = squareFactory;
         }
 

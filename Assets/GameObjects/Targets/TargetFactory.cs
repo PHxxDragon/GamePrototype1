@@ -4,16 +4,11 @@ namespace GameObjects.Targets
 {
     public class TargetFactory : MonoBehaviour
     {
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
-        void Start()
-        {
-        
-        }
+        [SerializeField] private TargetController targetPrefab;
 
-        // Update is called once per frame
-        void Update()
+        public TargetController CreateTarget(Vector3 position)
         {
-        
+            return Instantiate(targetPrefab, position, Quaternion.identity);
         }
     }
 }

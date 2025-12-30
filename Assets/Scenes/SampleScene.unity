@@ -158,7 +158,7 @@ Transform:
   m_GameObject: {fileID: 174588531}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.50985, y: 0.34626, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -402,6 +402,69 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &820996572
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 820996574}
+  - component: {fileID: 820996573}
+  - component: {fileID: 820996575}
+  m_Layer: 0
+  m_Name: TargetFactory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &820996573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 820996572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c2f63741c034d63b9152167781b1b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameObjects.Targets.TargetFactory
+  targetPrefab: {fileID: 1341421674892544385, guid: 2e2d878dd624527a7898ee2e4c75853e, type: 3}
+--- !u!4 &820996574
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 820996572}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &820996575
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 820996572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a0a779e9bbcba646a5e1b890dbb3f5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: InitArgs::Sisus.Init.Internal.ServiceTag
+  service: {fileID: 820996573}
+  toClients: 4
+  definingType:
+    scriptAssetGuid: 76c2f63741c034d63b9152167781b1b0
+    TypeNameAndAssembly: GameObjects.Targets.TargetFactory, Assembly-CSharp
 --- !u!1 &978647215
 GameObject:
   m_ObjectHideFlags: 0
@@ -553,7 +616,7 @@ Transform:
   m_GameObject: {fileID: 1185853690}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.20861, y: 0.65856, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -575,7 +638,7 @@ MonoBehaviour:
   toClients: 4
   definingType:
     scriptAssetGuid: faa7e41745dff441c94d07d371488dd9
-    TypeNameAndAssembly: GameObjects.Square.SquareFactory, Assembly-CSharp
+    TypeNameAndAssembly: GameObjects.Squares.SquareFactory, Assembly-CSharp
 --- !u!1001 &1506899350
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1065,6 +1128,7 @@ SceneRoots:
   - {fileID: 619394802}
   - {fileID: 174588533}
   - {fileID: 1185853692}
+  - {fileID: 820996574}
   - {fileID: 7902494749465781133}
   - {fileID: 6897261053162278579}
   - {fileID: 1888410418}

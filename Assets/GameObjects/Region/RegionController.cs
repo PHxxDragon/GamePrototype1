@@ -1,25 +1,22 @@
 using Sisus.Init;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace GameObjects.Region
 {
-    public class RegionController : MonoBehaviour<Transform, float>
+    public class RegionController : MonoBehaviour
     {
-        private Transform _rotateCenter;
+        [SerializeField]
+        private Transform rotateCenter;
 
-        private float _rotateSpeed;
-        
-        protected override void Init(Transform firstArgument, float secondArgument)
-        {
-            _rotateCenter = firstArgument;
-            _rotateSpeed = secondArgument;
-        }
+        [SerializeField]
+        private float rotateSpeed;
 
         public float Radius => new Vector2(transform.localScale.x,  transform.localScale.y).magnitude / 2;
 
         private void Update()
         {
-            transform.RotateAround(_rotateCenter.position, Vector3.back, _rotateSpeed * Time.deltaTime);
+            transform.RotateAround(rotateCenter.position, Vector3.back, rotateSpeed * Time.deltaTime);
         }
     }
 }

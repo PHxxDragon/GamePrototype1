@@ -100,7 +100,7 @@ namespace GameObjects.Squares
         {
             scoreCircle.SetActive(true);
             await UniTask.WaitForSeconds(0.4f);
-            scoreCircle.SetActive(false);
+            if (scoreCircle) scoreCircle.SetActive(false);
         }
     }
 }

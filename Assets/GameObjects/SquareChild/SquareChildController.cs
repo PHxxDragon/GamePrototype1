@@ -1,8 +1,5 @@
-using GameManagers;
 using GameObjects.Square;
-using UI;
 using UnityEngine;
-using Sisus.Init;
 
 namespace GameObjects.SquareChild
 {

@@ -132,6 +132,8 @@ GameObject:
   - component: {fileID: 174588534}
   - component: {fileID: 174588536}
   - component: {fileID: 174588535}
+  - component: {fileID: 174588537}
+  - component: {fileID: 174588538}
   m_Layer: 0
   m_Name: GameModels
   m_TagString: Untagged
@@ -212,6 +214,35 @@ MonoBehaviour:
   definingType:
     scriptAssetGuid: dbaf2ea905477224e9d46696c3aae371
     TypeNameAndAssembly: GameModels.SquareControllerList, Assembly-CSharp
+--- !u!114 &174588537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 174588531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2406bdd98a2b4dcb9406556e595a8a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameModels.ScoreModel
+--- !u!114 &174588538
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 174588531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a0a779e9bbcba646a5e1b890dbb3f5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: InitArgs::Sisus.Init.Internal.ServiceTag
+  service: {fileID: 174588537}
+  toClients: 4
+  definingType:
+    scriptAssetGuid: b2406bdd98a2b4dcb9406556e595a8a2
+    TypeNameAndAssembly: GameModels.ScoreModel, Assembly-CSharp
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -892,7 +923,6 @@ GameObject:
   - component: {fileID: 1888410416}
   - component: {fileID: 1888410415}
   - component: {fileID: 1888410414}
-  - component: {fileID: 1888410419}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -996,23 +1026,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1888410419
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1888410413}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a0a779e9bbcba646a5e1b890dbb3f5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: InitArgs::Sisus.Init.Internal.ServiceTag
-  service: {fileID: 1888410414}
-  toClients: 4
-  definingType:
-    scriptAssetGuid: 00b503be6022491c996df5fea1113234
-    TypeNameAndAssembly: UI.GameUI, Assembly-CSharp
 --- !u!1001 &6897261053162278579
 PrefabInstance:
   m_ObjectHideFlags: 0

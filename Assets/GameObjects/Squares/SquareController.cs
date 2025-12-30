@@ -8,21 +8,21 @@ using UnityEngine;
 
 namespace GameObjects.Squares
 {
-    public class SquareController : MonoBehaviour<TargetControllerList, GameUI, SquareFactory>
+    public class SquareController : MonoBehaviour<TargetControllerList, ScoreModel, SquareFactory>
     {
         [SerializeField] private float remainHealth = 10f;
         [SerializeField] private SpriteRenderer spriteRenderer;
         [SerializeField] private GameObject scoreCircle;
         
-        protected override void Init(TargetControllerList targetControllerList, GameUI gameUI, SquareFactory squareFactory)
+        protected override void Init(TargetControllerList targetControllerList, ScoreModel scoreModel, SquareFactory squareFactory)
         {
             _targetControllerList = targetControllerList;
-            _gameUI = gameUI;
+            _scoreModel = scoreModel;
             _squareFactory = squareFactory;
         }
         
         private TargetControllerList _targetControllerList;
-        private GameUI _gameUI;
+        private ScoreModel _scoreModel;
         private TargetController _currentTarget;
         private SquareFactory _squareFactory;
         
@@ -52,7 +52,7 @@ namespace GameObjects.Squares
                     {
                         _currentTarget = SelectTarget(_targetControllerList.TargetComponents);
                         _currentStopTime = Constants.Constants.SquareSpawner.StopTime;
-                        _gameUI.AddScore(1);
+                        _scoreModel.AddScore(1);
                         _ = ShowCoin();
                         _remainScoreToHaveChild--;
 

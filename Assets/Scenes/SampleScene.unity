@@ -1019,18 +1019,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 174588532}
     - target: {fileID: 8357388728981716956, guid: db3923cf99db5374db356db36a054cdf, type: 3}
-      propertyPath: squarePrefab
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8357388728981716956, guid: db3923cf99db5374db356db36a054cdf, type: 3}
-      propertyPath: regionTopLeft
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8357388728981716956, guid: db3923cf99db5374db356db36a054cdf, type: 3}
-      propertyPath: regionBottomRight
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8357388728981716956, guid: db3923cf99db5374db356db36a054cdf, type: 3}
       propertyPath: m_EditorClassIdentifier
       value: Assembly-CSharp::Spawners.SquareSpawner.SquareSpawner
       objectReference: {fileID: 0}
@@ -1045,16 +1033,6 @@ PrefabInstance:
 --- !u!1 &7902494749465781134 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6587715872837820337, guid: db3923cf99db5374db356db36a054cdf, type: 3}
-  m_PrefabInstance: {fileID: 7902494749465781133}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &7902494749465781135 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4384200908703631778, guid: db3923cf99db5374db356db36a054cdf, type: 3}
-  m_PrefabInstance: {fileID: 7902494749465781133}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &7902494749465781136 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6657363548939522223, guid: db3923cf99db5374db356db36a054cdf, type: 3}
   m_PrefabInstance: {fileID: 7902494749465781133}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &7902494749465781137 stripped
@@ -1087,15 +1065,6 @@ MonoBehaviour:
     value: {fileID: 0}
   secondArgument:
     reference: {fileID: 0}
-    value: {fileID: 0}
-  thirdArgument:
-    reference: {fileID: 7902494749465781136}
-    value: {fileID: 0}
-  fourthArgument:
-    reference: {fileID: 7902494749465781135}
-    value: {fileID: 0}
-  fifthArgument:
-    reference: {fileID: 926860894866518141, guid: 274b8aeb05886a5fc9405d5a7a53f90d, type: 3}
     value: {fileID: 0}
   disposeArgumentsOnDestroy: 0
   asyncArguments: 0

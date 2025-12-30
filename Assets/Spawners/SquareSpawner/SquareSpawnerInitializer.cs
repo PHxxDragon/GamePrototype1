@@ -9,7 +9,7 @@ namespace Spawners.SquareSpawner
 	/// <summary>
 	/// Initializer for the <see cref="SquareSpawner"/> component.
 	/// </summary>
-	internal sealed class SquareSpawnerInitializer : Initializer<SquareSpawner, GameManager, GameUI, Transform, Transform, SquareController>
+	internal sealed class SquareSpawnerInitializer : Initializer<SquareSpawner, GameManager, GameUI>
 	{
 		#if UNITY_EDITOR
 		/// <summary>
@@ -25,9 +25,6 @@ namespace Spawners.SquareSpawner
 		{
 			public GameManager gameManager = default;
 			public GameUI gameUI = default;
-			public Transform topLeft = default;
-			public Transform bottomRight = default;
-			public SquareController squareController = default;
 		}
 		#endif
 	}

@@ -1,24 +1,30 @@
+using GameModels;
+using Sisus.Init;
 using TMPro;
 using UnityEngine;
 
 namespace UI
 {
-    public class GameUI : MonoBehaviour
+    public class GameUI : MonoBehaviour<ScoreModel>
     {
         [SerializeField] private TMP_Text scoreText;
     
-        private int _score;
-
-        public void SetScore(int score)
+        private ScoreModel _scoreModel;
+        
+        protected override void Init(ScoreModel scoreModel)
         {
-            _score = score;
-            scoreText.text = "Score: " + score;
+            _scoreModel = scoreModel;
+            _scoreModel.OnScoreChanged += OnScoreChanged;
         }
 
-        public void AddScore(int score)
+        private void OnScoreChanged(int oldScore, int newScore)
         {
-            _score += score;
-            scoreText.text = "Score: " + _score;
+            scoreText.text = "Score: " + newScore;
+        }
+
+        private void OnDestroy()
+        {
+            _scoreModel.OnScoreChanged -= OnScoreChanged;
         }
     }
 }

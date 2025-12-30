@@ -1,10 +1,9 @@
 using GameManagers;
-using GameObjects.Squares;
 using Sisus.Init;
 using UI;
 using UnityEngine;
 
-namespace Spawners.SquareSpawners
+namespace GameObjects.Squares
 {
     public class SquareSpawner : MonoBehaviour<GameManager, GameUI, SquareFactory>
     {

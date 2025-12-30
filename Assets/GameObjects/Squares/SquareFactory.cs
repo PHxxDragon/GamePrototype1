@@ -1,4 +1,3 @@
-using GameObjects.SquareChilds;
 using UnityEngine;
 
 namespace GameObjects.Squares

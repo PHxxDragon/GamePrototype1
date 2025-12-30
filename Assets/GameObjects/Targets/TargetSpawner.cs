@@ -1,11 +1,9 @@
 using GameManagers;
 using GameObjects.Regions;
-using GameObjects.Targets;
 using Sisus.Init;
 using UnityEngine;
-using UnityEngine.Assertions;
 
-namespace Spawners.TargetSpawners
+namespace GameObjects.Targets
 {
     public class TargetSpawner : MonoBehaviour<GameManager, TargetFactory>
     {

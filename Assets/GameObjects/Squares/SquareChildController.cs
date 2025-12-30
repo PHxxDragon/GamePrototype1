@@ -1,8 +1,7 @@
-using GameObjects.Squares;
 using Sisus.Init;
 using UnityEngine;
 
-namespace GameObjects.SquareChilds
+namespace GameObjects.Squares
 {
     public class SquareChildController : MonoBehaviour<SquareFactory>
     {
@@ -20,7 +19,7 @@ namespace GameObjects.SquareChilds
             _parent = parent;
         }
 
-        void Update()
+        private void Update()
         {
             if (_parent)
             {

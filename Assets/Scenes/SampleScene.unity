@@ -130,8 +130,10 @@ GameObject:
   - component: {fileID: 174588533}
   - component: {fileID: 174588532}
   - component: {fileID: 174588534}
+  - component: {fileID: 174588536}
+  - component: {fileID: 174588535}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: GameModels
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -166,6 +168,35 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &174588534
 MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 174588531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b9c830534ca94002a5df0a528048adf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameModels.TargetControllerList
+--- !u!114 &174588535
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 174588531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a0a779e9bbcba646a5e1b890dbb3f5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: InitArgs::Sisus.Init.Internal.ServiceTag
+  service: {fileID: 174588534}
+  toClients: 4
+  definingType:
+    scriptAssetGuid: 2b9c830534ca94002a5df0a528048adf
+    TypeNameAndAssembly: GameModels.TargetControllerList, Assembly-CSharp
+--- !u!114 &174588536
+MonoBehaviour:
   m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -180,7 +211,7 @@ MonoBehaviour:
   toClients: 4
   definingType:
     scriptAssetGuid: dbaf2ea905477224e9d46696c3aae371
-    TypeNameAndAssembly: GameManagers.GameManager, Assembly-CSharp
+    TypeNameAndAssembly: GameModels.SquareControllerList, Assembly-CSharp
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

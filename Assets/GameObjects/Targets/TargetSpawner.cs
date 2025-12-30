@@ -1,23 +1,23 @@
-using GameManagers;
+using GameModels;
 using GameObjects.Regions;
 using Sisus.Init;
 using UnityEngine;
 
 namespace GameObjects.Targets
 {
-    public class TargetSpawner : MonoBehaviour<GameManager, TargetFactory>
+    public class TargetSpawner : MonoBehaviour<TargetControllerList, TargetFactory>
     {
         [SerializeField] private Transform regionTopLeft;
         [SerializeField] private Transform regionBottomRight;
         [SerializeField] private RegionController regionController;
         
-        private GameManager _gameManager;
+        private TargetControllerList _targetControllerList;
         private TargetFactory _targetFactory;
         private float _remainTime;
 
-        protected override void Init(GameManager gameManager, TargetFactory targetFactory)
+        protected override void Init(TargetControllerList targetControllerList, TargetFactory targetFactory)
         {
-            _gameManager = gameManager;
+            _targetControllerList = targetControllerList;
             _targetFactory = targetFactory;
         }
 
@@ -35,7 +35,7 @@ namespace GameObjects.Targets
 
                 Vector3 newPosition = new(Random.Range(regionTopLeft.position.x, regionBottomRight.position.x), Random.Range(regionTopLeft.position.y, regionBottomRight.position.y), 0);
                 var targetController = _targetFactory.CreateTarget(newPosition);
-                _gameManager.TargetComponents.Add(targetController);
+                _targetControllerList.TargetComponents.Add(targetController);
 
                 if (Vector3.Distance(regionController.transform.position, targetController.transform.position) <
                     regionController.Radius)

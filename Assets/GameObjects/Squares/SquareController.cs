@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
-using GameManagers;
+using GameModels;
 using GameObjects.Targets;
 using Sisus.Init;
 using UI;
@@ -8,20 +8,20 @@ using UnityEngine;
 
 namespace GameObjects.Squares
 {
-    public class SquareController : MonoBehaviour<GameManager, GameUI, SquareFactory>
+    public class SquareController : MonoBehaviour<TargetControllerList, GameUI, SquareFactory>
     {
         [SerializeField] private float remainHealth = 10f;
         [SerializeField] private SpriteRenderer spriteRenderer;
         [SerializeField] private GameObject scoreCircle;
         
-        protected override void Init(GameManager gameManager, GameUI gameUI, SquareFactory squareFactory)
+        protected override void Init(TargetControllerList targetControllerList, GameUI gameUI, SquareFactory squareFactory)
         {
-            _gameManager = gameManager;
+            _targetControllerList = targetControllerList;
             _gameUI = gameUI;
             _squareFactory = squareFactory;
         }
         
-        private GameManager _gameManager;
+        private TargetControllerList _targetControllerList;
         private GameUI _gameUI;
         private TargetController _currentTarget;
         private SquareFactory _squareFactory;
@@ -40,7 +40,7 @@ namespace GameObjects.Squares
         {
             if (!_currentTarget)
             {
-                _currentTarget = SelectTarget(_gameManager.TargetComponents);
+                _currentTarget = SelectTarget(_targetControllerList.TargetComponents);
             } 
             else
             {
@@ -50,7 +50,7 @@ namespace GameObjects.Squares
                     _currentStopTime -= Time.deltaTime;
                     if (_currentStopTime <= 0f)
                     {
-                        _currentTarget = SelectTarget(_gameManager.TargetComponents);
+                        _currentTarget = SelectTarget(_targetControllerList.TargetComponents);
                         _currentStopTime = Constants.Constants.SquareSpawner.StopTime;
                         _gameUI.AddScore(1);
                         _ = ShowCoin();

@@ -1,10 +1,10 @@
-using GameManagers;
+using GameModels;
 using Sisus.Init;
 using UnityEngine;
 
 namespace GameObjects.Squares
 {
-    public class SquareSpawner : MonoBehaviour<GameManager, SquareFactory>
+    public class SquareSpawner : MonoBehaviour<SquareControllerList, SquareFactory>
     {
         [SerializeField]
         private Transform regionTopLeft;
@@ -12,13 +12,13 @@ namespace GameObjects.Squares
         [SerializeField]
         private Transform regionBottomRight;
         
-        private GameManager _gameManager;
+        private SquareControllerList _squareControllerList;
         private SquareFactory _squareFactory;
         private float _remainTime;
 
-        protected override void Init(GameManager gameManager, SquareFactory squareFactory)
+        protected override void Init(SquareControllerList squareControllerList, SquareFactory squareFactory)
         {
-            _gameManager = gameManager;
+            _squareControllerList = squareControllerList;
             _squareFactory = squareFactory;
         }
 
@@ -37,7 +37,7 @@ namespace GameObjects.Squares
                 Vector3 newPosition = new(Random.Range(regionTopLeft.position.x, regionBottomRight.position.x), Random.Range(regionTopLeft.position.y, regionBottomRight.position.y), 0);
                 var squareController = _squareFactory.CreateSquare(newPosition);
                 squareController.transform.position = newPosition;
-                _gameManager.SquareComponents.Add(squareController);
+                _squareControllerList.SquareComponents.Add(squareController);
             }
         }
     }

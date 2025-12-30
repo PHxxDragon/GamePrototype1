@@ -1,20 +1,37 @@
-using UnityEngine;
+using System;
+using GameModels;
+using Sisus.Init;
 
 namespace GameObjects.Targets
 {
-    public class TargetController : MonoBehaviour
+    public class TargetController : MonoBehaviour<TargetControllerList, TargetHealthModel>
     {
-    
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
+        protected override void Init(TargetControllerList targetControllerList, TargetHealthModel targetHealthModel)
+        {
+            _targetControllerList = targetControllerList;
+            _targetHealthModel = targetHealthModel;
+        }
+        
+        private TargetControllerList _targetControllerList;
+        private TargetHealthModel _targetHealthModel;
+
         private void Start()
         {
-        
+            _targetHealthModel.Reset();
         }
 
-        // Update is called once per frame
-        private void Update()
+        private void OnDestroy()
         {
-        
+            _targetControllerList.TargetComponents.Remove(this);
+        }
+
+        public void TakeDamage(float damage)
+        {
+            _targetHealthModel.Health -= damage;
+            if (_targetHealthModel.Health <= 0)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }

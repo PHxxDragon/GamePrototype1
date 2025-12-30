@@ -1055,52 +1055,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6587715872837820337, guid: db3923cf99db5374db356db36a054cdf, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7902494749465781138}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db3923cf99db5374db356db36a054cdf, type: 3}
---- !u!1 &7902494749465781134 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6587715872837820337, guid: db3923cf99db5374db356db36a054cdf, type: 3}
-  m_PrefabInstance: {fileID: 7902494749465781133}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &7902494749465781137 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8357388728981716956, guid: db3923cf99db5374db356db36a054cdf, type: 3}
-  m_PrefabInstance: {fileID: 7902494749465781133}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7902494749465781134}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a22baa76318ef74881068bfc4f30b63, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Spawners.SquareSpawner.SquareSpawner
---- !u!114 &7902494749465781138
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7902494749465781134}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27b1ca201550b3c0c8d52d53b4a5e6c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  target: {fileID: 7902494749465781137}
-  nullArgumentGuard: 3
-  firstArgument:
-    reference: {fileID: 0}
-    value: {fileID: 0}
-  secondArgument:
-    reference: {fileID: 0}
-    value: {fileID: 0}
-  thirdArgument:
-    reference: {fileID: 0}
-    value: {fileID: 0}
-  disposeArgumentsOnDestroy: 0
-  asyncArguments: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

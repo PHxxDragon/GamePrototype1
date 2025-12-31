@@ -1,3 +1,4 @@
+using DataStructure;
 using GameModels;
 using Sisus.Init;
 using UnityEngine;
@@ -6,11 +7,7 @@ namespace GameObjects.Squares
 {
     public class SquareSpawner : MonoBehaviour<SquareControllerList, SquareFactory>
     {
-        [SerializeField]
-        private Transform regionTopLeft;
-        
-        [SerializeField]
-        private Transform regionBottomRight;
+        [SerializeField] private RegionMarker regionMarker;
         
         private SquareControllerList _squareControllerList;
         private SquareFactory _squareFactory;
@@ -34,7 +31,7 @@ namespace GameObjects.Squares
             {
                 _remainTime += Constants.Constants.SquareSpawner.SpawnTime;
 
-                Vector3 newPosition = new(Random.Range(regionTopLeft.position.x, regionBottomRight.position.x), Random.Range(regionTopLeft.position.y, regionBottomRight.position.y), 0);
+                Vector3 newPosition = new(Random.Range(regionMarker.RegionTopLeft.x, regionMarker.RegionBottomRight.x), Random.Range(regionMarker.RegionTopLeft.y, regionMarker.RegionBottomRight.y), 0);
                 var squareController = _squareFactory.CreateSquare(newPosition);
                 squareController.transform.position = newPosition;
                 _squareControllerList.SquareComponents.Add(squareController);

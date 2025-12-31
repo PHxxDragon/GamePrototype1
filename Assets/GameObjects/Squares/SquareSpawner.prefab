@@ -41,6 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6252998496854150174}
   - component: {fileID: 8357388728981716956}
+  - component: {fileID: 8547983514247911803}
   m_Layer: 0
   m_Name: SquareSpawner
   m_TagString: Untagged
@@ -77,10 +78,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a22baa76318ef74881068bfc4f30b63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  gameUI: {fileID: 0}
-  squarePrefab: {fileID: 926860894866518141, guid: 274b8aeb05886a5fc9405d5a7a53f90d, type: 3}
-  regionTopLeft: {fileID: 6657363548939522223}
-  regionBottomRight: {fileID: 4384200908703631778}
+  regionMarker: {fileID: 8547983514247911803}
+--- !u!114 &8547983514247911803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6587715872837820337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5be350091d6d5fbf5ab5582624447b90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DataStructure.RegionMarker
+  regionTopLeft: {x: -1, y: 1}
+  regionBottomRight: {x: 1, y: -1}
+  color: {r: 0, g: 1, b: 0, a: 1}
 --- !u!1 &7390350745724671979
 GameObject:
   m_ObjectHideFlags: 0

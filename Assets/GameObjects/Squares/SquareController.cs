@@ -59,7 +59,7 @@ namespace GameObjects.Squares
             {
                 if (_remainHealth <= 10f)
                 {
-                    _remainHealth += Time.deltaTime;
+                    _remainHealth += Time.deltaTime * 2;
                     _currentTarget.TakeDamage(Time.deltaTime * 10f);
                 }
                 
@@ -88,7 +88,7 @@ namespace GameObjects.Squares
             else
             {
                 if (_currentTarget) transform.position = Vector3.MoveTowards(transform.position, _currentTarget.transform.position, Constants.Constants.SquareSpawner.MoveSpeed * Time.deltaTime);
-                _remainHealth -= Time.deltaTime;
+                _remainHealth -= Time.deltaTime / 2;
                 
                 if (_remainHealth <= 3f)
                 {

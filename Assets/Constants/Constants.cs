@@ -16,7 +16,7 @@ namespace Constants
 
         public static class TargetSpawner
         {
-            public const float SpawnTime = 1f;
+            public const float SpawnTime = 3f;
         }
     }
 }

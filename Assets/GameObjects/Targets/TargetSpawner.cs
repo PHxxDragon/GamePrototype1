@@ -1,3 +1,4 @@
+using DataStructure;
 using GameModels;
 using GameObjects.Regions;
 using Sisus.Init;
@@ -7,8 +8,7 @@ namespace GameObjects.Targets
 {
     public class TargetSpawner : MonoBehaviour<TargetControllerList, TargetFactory>
     {
-        [SerializeField] private Transform regionTopLeft;
-        [SerializeField] private Transform regionBottomRight;
+        [SerializeField] private RegionMarker regionMarker;
         [SerializeField] private RegionController regionController;
         
         private TargetControllerList _targetControllerList;
@@ -33,7 +33,7 @@ namespace GameObjects.Targets
             {
                 _remainTime += Constants.Constants.TargetSpawner.SpawnTime;
 
-                Vector3 newPosition = new(Random.Range(regionTopLeft.position.x, regionBottomRight.position.x), Random.Range(regionTopLeft.position.y, regionBottomRight.position.y), 0);
+                Vector3 newPosition = new(Random.Range(regionMarker.RegionTopLeft.x, regionMarker.RegionBottomRight.x), Random.Range(regionMarker.RegionTopLeft.y, regionMarker.RegionBottomRight.y), 0);
                 var targetController = _targetFactory.CreateTarget(newPosition);
                 _targetControllerList.TargetComponents.Add(targetController);
 

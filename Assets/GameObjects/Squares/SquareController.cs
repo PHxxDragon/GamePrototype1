@@ -5,16 +5,25 @@ using GameModels;
 using GameObjects.Targets;
 using Sisus.Init;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 namespace GameObjects.Squares
 {
     public class SquareController : MonoBehaviour<SquareControllerList, TargetControllerList, ScoreModel, SquareFactory>
     {
-        [SerializeField] private float remainHealth = 10f;
+        [SerializeField] private float maxHealth = 10f;
+        [SerializeField] private Slider healthSlider;
         [SerializeField] private SpriteRenderer spriteRenderer;
         [SerializeField] private GameObject scoreCircle;
+
+        private void Start()
+        {
+            _remainHealth = maxHealth;
+        }
         
+        private float _remainHealth = 10f;
+
         protected override void Init(SquareControllerList squareControllerList, TargetControllerList targetControllerList, ScoreModel scoreModel, SquareFactory squareFactory)
         {
             _squareControllerList = squareControllerList;
@@ -41,18 +50,20 @@ namespace GameObjects.Squares
 
         private void Update()
         {
+            healthSlider.value = _remainHealth / maxHealth; 
+            
             if (!_currentTarget) _currentTarget = SelectTarget(_targetControllerList.TargetComponents);
 
             var currentDistance = _currentTarget ? Vector3.Distance(transform.position, _currentTarget.transform.position) : float.MaxValue;
             if (Mathf.Abs(currentDistance) < Constants.Constants.SquareSpawner.StopRadius)
             {
-                if (remainHealth <= 10f)
+                if (_remainHealth <= 10f)
                 {
-                    remainHealth += Time.deltaTime;
+                    _remainHealth += Time.deltaTime;
                     _currentTarget.TakeDamage(Time.deltaTime * 10f);
                 }
                 
-                if (remainHealth >= 3f)
+                if (_remainHealth >= 3f)
                 {
                     spriteRenderer.color = new Color(0.26f, 0.7f, 0.33f);
                 }
@@ -77,14 +88,14 @@ namespace GameObjects.Squares
             else
             {
                 if (_currentTarget) transform.position = Vector3.MoveTowards(transform.position, _currentTarget.transform.position, Constants.Constants.SquareSpawner.MoveSpeed * Time.deltaTime);
-                remainHealth -= Time.deltaTime;
+                _remainHealth -= Time.deltaTime;
                 
-                if (remainHealth <= 3f)
+                if (_remainHealth <= 3f)
                 {
                     spriteRenderer.color = Color.darkGoldenRod;
                 } 
                 
-                if (remainHealth <= 0f)
+                if (_remainHealth <= 0f)
                 {
                     Destroy(gameObject);
                 }
